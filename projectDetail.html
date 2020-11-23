@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, width=750px,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <title>咕咚</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/projectDetail.css">
+    <link rel="shortcut icon" href="./resource/images/favicon.ico" type="image/x-icon">
+    <style>
+    </style>
+</head>
+<body> 
+<div class="wrap">
+	<header>
+		咕咚
+		<a href="project.html" class="back flex"><img src="imgs/right.png"></a>
+	</header>
+
+	<div class="itemBox">
+		<div class="imgs">
+			
+		</div>
+		<div class="itemContent">
+			<div class="title">--</div>
+			<div class="tips">--</div>
+			<div class="content">--</div>
+		</div>
+	</div>
+
+
+	<div class="contentBox">
+	  <div class="progressBox">
+	    <div class="progress"></div>
+	    <div class="text">已预约：<span class="progressNum">--</span> %</div>
+	  </div>
+	  
+	  <div class="appointmentSummary">
+	    <div class="item">
+	      <div class="title">目标金额</div>
+	      <div class="num">--</div>
+	    </div>
+	    <div class="line"></div>
+	    <div class="item">
+	      <div class="title">已预约</div>
+	      <div class="num">--</div>
+	    </div>
+	    <div class="line"></div>
+	    <div class="item">
+	      <div class="title">起投金额</div>
+	      <div class="num">--</div>
+	    </div>
+	  </div>
+
+	  <div class="aboutBox">
+	    <!-- 项目介绍 -->
+	    <div class="item">
+	      <div class="h3 flex" onclick="selecTab(0)">
+	        <div style="flex:1;">项目介绍</div>
+	        <img src="imgs/arrow_right.png" class="arrow rotate" alt="">
+	      </div>
+	      <div class="showbox">
+	        <div class="p introduction">&nbsp;</div>
+	        <div class="contentImages">
+	        </div>
+	      </div>
+	      <div style="margin:10px 25px;border-bottom:1px solid #c1c1c1;"></div>
+	    </div>
+	    <!-- 经营报表 -->
+	    <div class="item">
+	      <div class="h3 flex" onclick="selecTab(1)">
+	        <div style="flex:1;">经营报表</div>
+	        <img src="imgs/arrow_right.png" class="arrow" alt="">
+	      </div>
+
+
+	      <div class="showbox">
+	        <div class="dataTable">
+	          <!-- <div class="item flex">
+	            <div class="text">{{item.name}}</div>
+	            <div class="action">点击打开</div>
+	          </div>
+	          <div class="item flex">
+	            <div class="action" style="padding:0;">>>点击查看更多</div>
+	          </div> -->
+	        </div>
+	      </div>
+	      <div style="margin:10px 25px;border-bottom:1px solid #c1c1c1;"></div>
+	    </div>
+	    <!-- 团队介绍 -->
+	    <div class="item">
+	      <div class="h3 flex" onclick="selecTab(2)">
+	        <div style="flex:1;">团队介绍</div>
+	        <img src="imgs/arrow_right.png" class="arrow" alt="">
+	      </div>
+	      <div class="showbox" id="teamIntro">
+	      	<!-- <img class="imgs" src=""></img> -->
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div>
+
+	<!-- 更多报表 -->
+	<div wx:if="{{ShowOperatingReport == true}}" bindtap="ShowOperatingReport" class="showMsgPanel" style="display: none;">
+	  <div class='content' catchtap="ShowOperatingReport2">
+	    <div class="title">经营报表</div>
+	    <div class="ul">
+	      <div class="li flex" wx:for="{{businessDataImage}}" wx:key="images" data-src="{{item.src}}" bindtap="lookFile" wx:if="{{index >= tablePage*showTableNum && index < (tablePage+1)*showTableNum }}">
+	      <!--   -->
+	        <div class="radius"></div>
+	        <div style="flex:1">{{item.name}}</div>
+	      </div>
+	    </div>
+	    
+	    <div class="btnBox flex">
+	      <div class="btn1" style="border-radius:0;opacity:{{tableBtn1 == true ? '1':'0.6'}};" catchtap="lookTablePageGoUp" data-btn="0">上一页</div>
+	      <div class="btn2" style="border-radius:0;opacity:{{tableBtn2 == true ? '1':'0.6'}};" catchtap="lookTablePageGoDown" data-btn="1">下一页</div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<div class="footer" style="display: none;">
+	  <div class="buyBtn" onclick="buyProjectShareShow()">购买份额</div>
+	</div>
+
+
+	<!-- 购买份额 -->
+	<div id="buyShow" style="display: none;">
+	  <div class='alert'>
+	    <div class='content' style='padding:0;border-radius: 15px;overflow: hidden;'>
+	      <div class='title' style="line-height:80px;">输入购买的份额</div>
+	      <div class="Box">
+	        <form bindsubmit='buyProjectShare'>
+	          <div class="content" style="padding:0;">
+	            <div><div class="title" style="display:inline-block;color:#777;">餐厅：<span class="shopName"></span></div></div>
+	            <div><div class="title" style="display:inline-block;color:#777;">单份金额：￥<span class="unitAmount"></span></div></div>
+	            <div><div class="title" style="display:inline-block;color:#777;">还剩份额：<span class="share"></span>份</div></div>
+	            
+	            <div>
+	              <div class='shop-number' style="width: 100%">
+	                <div class="title" style="display:inline-block;color:#777;min-width: 187.5px;">购买份额：</div>
+	                <!-- <div class='shop-number-left'>
+	                    <div class='shop-number-left-name'>购买数量</div>
+	                    <div class='shop-number-left-desc'>每人限购3件</div>
+	                </div> -->
+	                <div class='shop-number-right' style="margin-top:1px;">
+	                    <div class="shop-number-right-reduce disable-btn" onclick='minusCount()'>-</div>
+	                    <div class='shop-number-right-input' style="flex:1;">
+	                    	<input type="number" name="" class="" style="width: 100%;text-align: center;justify-content: center;" id="needShare" disabled="">
+	                     <!--  <input class='' placeholder='' name="num" type="number" value="{{payPopUp.submited.pay_number}}" bindblur="checkCount"></input> -->
+	                    <!-- {{payPopUp.submited.pay_number}} -->
+	                    </div>
+	                    <div class="shop-number-right-plus " onclick='addCount()'>+</div>
+	                </div>
+	              </div>
+	            </div>
+	            <div>
+	              <div class="title" style="display:inline-block;color:#777;">所需金额：</div>
+	              <div class="title" style="display:inline-block;color:#777;">￥<span class="needMoney"></span></div>
+	              
+	            </div>
+	            <div>
+	              <div class="title" style="display:inline-block;color:#777;">我的资产：</div>
+	              <div class="title" style="display:inline-block;color:#777;">￥<span class="myMoney"></span></div>
+	            </div>
+	            
+	            <!-- <input class='item' placeholder='请输入要购买的份额' name="num" type="number"></input> -->
+	          </div>
+	          <!-- <input class='item' placeholder='请输入要出售的份额' name="pwd" password='true'></input> -->
+	          <div class="btnBox flex">
+	            <div class="btn1" onclick="buyProjectShare()">购买</div>
+	            <div class="btn2" onclick="$('#buyShow').hide()">取消</div>
+	          </div>
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div style="display: none;" id="buyMsgShow">
+	  <div class="showModal">
+	    <div class="content" style="padding:0;border-radius: 8px;overflow: hidden;">
+	      <div class="title" style="line-height:88px;">标题</div>
+	      <div class="showModalBox">
+	          <div class="content">
+	            <div class="msgTips">--</div>
+	            <div class="moneyTag" style="color:#ef0a0a;">--</div>
+	          </div>
+	          <div class="showModalBtnBox flex">
+	            <div class="btn1" onclick="$('#buyMsgShow').hide()">取消</div>
+	            <div class="btn2" onclick="buyShopGo()">确定</div>
+	          </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+<!-- 
+
+	<video width="320" height="240" controls>
+	  <source src="https://v.qq.com/x/page/x0164ytbgov.html" type="">
+	  您的浏览器不支持 HTML5 video 标签。
+	</video> -->
+
+	<!-- <video src="https://v.qq.com/x/cover/mzc00200ce4e8gi/d3130u6gi2w.html;https://v.qq.com/x/page/v00347mnrse.html"></video> -->
+
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/projectDetail.js"></script>
+<script type="text/javascript">
+	
+
+
+</script>
+</body>
+</html>

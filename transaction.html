@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, width=750px,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <title>咕咚</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/transaction.css">
+    <!-- <link rel="shortcut icon" href="./resource/images/favicon.ico" type="image/x-icon"> -->
+    <style>
+    </style>
+</head>
+<body> 
+<div class="wrap">
+	<header>
+		咕咚
+		<!-- <a href="project.html" class="back flex"><img src="imgs/right.png"></a> -->
+	</header>
+
+		
+	<div class="btnBox">
+	  <div class="btn active" onclick="selectTab(this,0)">一口价</div>
+	  <div class="btn" onclick="selectTab(this,1)">竞价</div>
+	</div>
+	<div class="sortGroup">
+	  <div class="sortGroupBox flex">
+	    <label class="flex active" onclick="selectTab(this,2)">
+	    	<img class="img" src="imgs/check_01.png">
+	    	<img class="img2" src="imgs/check_02.png">
+			<text>交易中</text>
+	    </label>
+	    <label class="flex" onclick="selectTab(this,3)">
+	    	<img class="img" src="imgs/check_01.png">
+	    	<img class="img2" src="imgs/check_02.png">
+			<text>已成交</text>
+	    </label>
+	  </div>
+	</div>
+
+	<div class="showList">
+	  
+	</div>
+	<div wx:if="{{projectList.length > 0}}" style="display: none;">
+	<!-- <div wx:if="{{projectList.length > 0}}" style="margin-bottom:{{bidCount > 0 ? '128':'150'}}px;"> -->
+	  <div class="row flex" wx:if="{{projectList.length > 0}}">
+	    <div style="width:160px">餐厅</div>
+	    <div style="width:70px">份额</div>
+	    <div style="width:130px" wx:if="{{ONEPRICE == true}}">单价</div>
+	    <div style="width:130px" wx:else>{{BIDCHECK == 0 ? '现价':'成交价'}}</div>
+
+	    <div style="width:180px" wx:if="{{ONEPRICE == true}}">总价</div>
+	    <div style="width:80px" wx:else>{{BIDCHECK == 0 ? '出售者':'竞拍者'}}</div>
+	    
+	    <div style="width:140px" wx:if="{{ONEPRICE == false && BIDCHECK == 0}}">当前最高出价</div>
+	    <div style="flex:1;text-align: right;">{{ONEPRICE == true ? '挂单时间':'结束时间'}}</div>
+	  </div>
+
+	  <navigator class="{{index%2 == 0 ? 'row1':'row2'}} flex" wx:for="{{projectList}}" wx:key="projectList"  url='/pages/shop/shop?id={{item.id}}&BID={{BID}}'>
+	    <div style="width:160px">{{item.name}}</div>
+	    <div style="width:70px">{{item.shareAmount}}份</div>
+
+	    <div wx:if="{{ONEPRICE == true}}" style="width:130px">￥{{item.curPrice / item.shareAmount}}</div>
+	    <div wx:else style="width:130px">￥{{item.curPrice > item.baseBidPrice ? item.curPrice:item.baseBidPrice}}</div>
+	    
+
+	    <div style="width:180px" wx:if="{{ONEPRICE == true}}">￥{{item.curPrice}}</div>
+	    <div style="width:80px" wx:else>{{BIDCHECK == 0 ? item.sellerHide:item.bidderHide}}</div>
+	    
+	    <div style="width:100px" wx:if="{{ONEPRICE == false && BIDCHECK == 0}}">￥{{item.curPrice > item.baseBidPrice ? item.curPrice:item.baseBidPrice}}</div>
+	    <div style="flex:1;text-align: right;{{ONEPRICE == true ? '':'color:#0091ff;'}}">{{ONEPRICE == true ? item.timer:item.bidtimer}}</div>
+
+
+	  </navigator>
+	</div>
+	<!-- <div wx:else style="margin-bottom:{{bidCount > 0 ? '128':'150'}}px;">
+	  <div class="noDataMsg" wx:if="{{ONEPRICE == true}}">暂无餐厅份额出售</div>
+	  <div class="noDataMsg" wx:else>暂无餐厅份额竞拍</div>
+	</div> -->
+
+
+
+	<navigator url="/pages/bid/bid" class="bidLink" wx:if="{{bidCount > 0}}">
+	  我正在参与 {{bidCount}} 家店铺份额的竞拍 >>
+	</navigator>
+	<div class="showTips" wx:else>
+	  特别提示：交易前请仔细核对交易项目与交易金额，交易最终解释权归平台所有，如有疑问可联系客服。
+	</div>
+
+
+
+	<footer>
+	</footer>
+
+
+
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/transaction.js"></script>
+<script type="text/javascript">
+	
+
+
+</script>
+</body>
+</html>

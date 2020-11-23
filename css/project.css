@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+header{
+  margin-bottom: 30px;
+}
+.itemBox{
+  margin:0 25px;
+  padding:25px;
+  border-radius: 15px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 12px 10px -12px #666;
+  margin-top: 20px;
+}
+.itemBox .imgs{
+  width:200px;
+  height:200px;
+  margin-right: 28px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.itemBox .itemContent{
+  flex: 1;
+  height:200px;
+}
+
+.itemBox .title{
+  font-size: 30px;
+  margin-bottom: 13px;
+  font-weight: bolder;
+  color: #000;
+}
+.itemBox .tips{
+  font-size: 26px;
+  margin-bottom: 28px;
+  color: #666;
+  font-weight: bolder;
+}
+.itemBox .content{
+  font-size: 22px;
+  color: #999;
+}
+
+

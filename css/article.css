@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+.wrap{
+    width:750px;
+    margin:0 auto;
+    height:100%;
+}
+.content{
+    padding:0 25px;
+    background: #f3f7f8;
+}
+.content h2{
+    font-weight: bolder;
+    font-size: 38px;
+    line-height: 68px;
+}
+.content h3{
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 36px;
+}
+.articleBox{
+    border-radius:15px;
+    background: #fff;
+    box-shadow: 0px 12px 10px -12px #666;
+    margin-bottom: 16px;
+    padding:25px;
+}
+.articleBox img{
+    width: 100%;
+}
+.articleBox h3{
+    font-weight: bolder;
+    font-size: 30px;
+    color: #323232;
+    margin-bottom: 36px;
+    padding-left: 18px;
+}
+.articleBox p{
+    font-size: 23.8px;
+    color: #666;
+    margin-bottom: 18px;
+    padding-left: 18px;
+}
+.articleBox .tips{
+    font-size: 18px;
+    color: #acacac;
+    margin-bottom: 25px;
+    line-height: 36px;
+    padding-left: 30px;
+}
+
+
+.shopList li{
+}
+.shopList li .shopDetail{
+    padding:0 25px 10px;
+    font-size: 22px;
+    font-weight: bolder;
+    color: #999;
+}
+.shopList li .shopDetail h3{
+    line-height: 50px;
+    font-size: 28px;
+    color: #323232;
+    font-weight: bolder;
+}
+.shopList li .shopDetail .btn1,
+.shopList li .shopDetail .btn2{
+    line-height: 36px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bolder;
+    padding: 0 10px;
+    background: #d1a444;
+    display: inline-block;
+    margin-left: 5px;
+    box-shadow: 0px 12px 10px -12px #666;
+    border-radius: 5px;
+}
+.shopList li .shopDetail .btn2{
+    background: #ffdc9b;
+}
+.p{
+    text-indent: 2em;
+}
+.imgs{
+    margin-bottom: 10px;
+}
+
+

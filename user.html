@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, width=750px,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <title>咕咚</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/user.css">
+    <!-- <link rel="shortcut icon" href="./resource/images/favicon.ico" type="image/x-icon"> -->
+    <style>
+    </style>
+</head>
+<body> 
+<div class="wrap">
+	<header>
+		咕咚
+		<!-- <a href="project.html" class="back flex"><img src="imgs/right.png"></a> -->
+	</header>
+
+		
+
+<div class="line">
+  <div class="line2"></div>
+</div>
+<div class="userBox">
+  <img class="userBg" src="imgs/userBg.png" alt="">
+  <div class="userImgs"></div>
+  <div class="userContent">
+    <div class="item">
+      <div class="titile">￥<span class="moneyCount">--</span></div>
+      <div class="sub">资产</div>
+    </div>
+    <div class="item">
+      <div class="titile cuponCount">--</div>
+      <div class="sub">优惠券</div>
+    </div>
+  </div>
+  <div class="userMsg">
+    <div class="name"></div>
+    <div>
+      <div class="tips"></div>
+    </div>
+  </div>
+  
+  <div class="vipBox" onclick="$('#showVipMsg').show()">
+    <image class="vipPic" src="imgs/vip2.png"></image>
+    <div class="level">Lv.<span class="vipLevel">0</span></div>
+    <div class="vip"></div>
+  </div>
+</div>
+
+
+<div class="userBtnBox clear">
+  <div class="btn active" onclick="selectTab(0,this)">我的店铺</div>
+  <div class="btn" onclick="selectTab(1,this)">资金流水</div>
+  <div class="btn" onclick="selectTab(2,this)">出售中</div>
+  <div class="btn" onclick="selectTab(3,this)">优惠券</div>
+</div>
+
+<div class="showList">
+  
+</div>
+
+
+
+
+
+<!-- 出售列表 -->
+<div wx:if="{{MySale == true}}" style="display: none;">
+  <div wx:if="{{MySaleList.length > 0}}">
+    <div class="row flex">
+      <div style="width:203rpx">店铺</div>
+      <div style="width:80rpx">份额</div>
+      <div style="flex:1">时间</div>
+      <div style="width:180rpx">总金额</div>
+      <div style="width:150rpx">操作</div>
+    </div>
+    <div class="{{index%2 == 0 ? 'row1':'row2'}} flex" wx:for="{{MySaleList}}" wx:key="MySaleList">
+      <div class="item" style="width:203rpx">{{item.name}}</div>
+      <div class="item" style="width:80rpx">{{item.shareAmount}}份</div>
+      <div class="item" style="flex:1">{{item.timer}}</div>
+      <div class="item" style="width:180rpx">￥{{item.curPrice > item.baseBidPrice ? item.curPrice:item.baseBidPrice}}</div>
+      <div style="width:150rpx;overflow:auto;" bindtap="unsaleShare" data-id="{{item.id}}"><div class="unsaleBtn">下架</div></div>
+    </div>
+  </div>
+  <div wx:else class="noDataMsg">您还没有出售店铺份额</div>
+</div>
+
+
+
+<!-- 出售 -->
+<div id="saleMyShop" style="display: none;">
+<!-- <div id="saleMyShop"> -->
+  <div class='alert'>
+    <div class='content' style='padding:0;border-radius: 15px;overflow: hidden;'>
+      <div class='title' style="line-height:80px;">输入出售份额</div>
+      <div class="Box">
+        <form bindsubmit='saleShare'>
+          <div class="content" style="padding:0;">
+            <div><div class="title">餐厅：<span class="projectName">--</span></div></div>
+            <div><div class="title">拥有份额：<span class="shareAmount">--</span>份</div></div>
+            
+            <input hidden='true' name="id" value="{{userShopId}}"></input>
+
+     <!--  <label class="flex active" onclick="selectTab(this,2)">
+        <img class="img" src="imgs/check_01.png">
+        <img class="img2" src="imgs/check_02.png">
+      <text>一口价</text>
+      </label>
+      <label class="flex" onclick="selectTab(this,3)">
+        <img class="img" src="imgs/check_01.png">
+        <img class="img2" src="imgs/check_02.png">
+      <text>竞价</text>
+      </label> -->
+            <div id="selectTag" style="margin-top:20px;" bindchange="bindTagChange">
+              <label class="title" onclick="selectTypeShow(0)">
+                <img class="img2" style="width: 50px;margin-right: 10px;" src="imgs/check_02.png">一口价
+              </label>
+              <label class="title" style="margin-left:20px;" onclick="selectTypeShow(1)">
+                <img class="img" style="width: 50px;margin-right: 10px;" src="imgs/check_01.png">竞价
+              </label>
+            </div>
+
+            <div>
+              <div class='shop-number' style="width: 100%;">
+                <div class="title" style="display:inline-block;color:#777;min-width: 187.5px">出售份额：</div>
+                <div class='shop-number-right'>
+                    <div class="shop-number-right-reduce disable-btn" onclick='minusCount()'>-</div>
+                    <div class='shop-number-right-input'>
+                      <input class='' placeholder='' name="num" type="number" value="0" bindblur="checkCount" style="width:100%;text-align: center;" disabled="" id="saleShareNum"></input>
+                    </div>
+                    <div class="shop-number-right-plus " onclick='addCount()'>+</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- <div wx:if="{{saleTag == 'BID'}}">
+              <picker mode="date" value="{{date}}" name="date" bindchange="bindDateChange" start="{{startTime}}">
+                <div class="title" style="color:#0091ff">结束日期: {{date}}</div>
+              </picker>
+            
+              <div class="flex" style="margin-top:20rpx;">
+                <div class="title">起始价格：</div>
+                <input class='' placeholder='请输入起始价格' name="money" type="number" style="flex:1;"></input>
+              </div>
+              <div class="flex" style="margin-top:20rpx;">
+                <div class="title">递增幅度：</div>
+                <input class='' placeholder='请输入递增金额' name="step" type="number" style="flex:1;"></input>
+              </div>
+            </div> -->
+            <div class="bidFalse">
+              <div class="flex" style="margin-top:20px;">
+                <div class="title" style="min-width: 187.5px;">出售总价：</div>
+                <input class='' placeholder='请输入要出售总价' name="money" type="number" style="flex:1;max-width: 300px;" id="saleTotalPrice"></input>
+              </div>
+            </div>
+            <div class="bidTrue" style="display: none;">
+              <div class="flex" style="margin-top:20px;">
+                <div class="title" style="color:#0091ff;">结束日期：</div>
+                <input class='date' name="date" type="date" style="flex:1;max-width: 300px;color:#0091ff;border: none;" id="endDate"></input>
+              </div>
+              <div class="flex" style="margin-top:20px;">
+                <div class="title" style="min-width: 187.5px;">起始价格：</div>
+                <input class='' placeholder='请输入起始价格' name="money" type="number" style="flex:1;max-width: 300px;" id="basePrice"></input>
+              </div>
+              <div class="flex" style="margin-top:20px;">
+                <div class="title" style="min-width: 187.5px;">递增幅度：</div>
+                <input class='' placeholder='请输入递增金额' name="step" type="number" style="flex:1;max-width: 300px;" id="stepPrice"></input>
+              </div>
+            </div>
+            
+          </div>
+          
+          <div class="btnBox flex">
+            <div class="btn1" onclick="saleShare()">出售</div>
+            <div class="btn2" onclick="$('#saleMyShop').hide()" bindtap="cancelSale">取消</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contactUs" onclick="$('#showContactUs').show()">>>联系我们</div>
+
+<div class="showMsgPanel" style="display: none;" id="showContactUs">
+  <div class='content' catchtap="showMsgPanel2">
+    <div class="title">联系我们</div>
+    <div class="ul">
+      <div class="li flex" style="border:none;margin-bottom:28rpx;">
+        <div class="radius"></div>
+        <div style="flex:1">商务合作请联系</div>
+      </div>
+      <div class="aboutType flex" catchtap="copy" bindlongpress="copy" data-copy="wx818868">
+        <image class="imgs" src="imgs/showIcon_01.png"></image>
+        <text class="text">wx818868</text>
+      </div>
+      <div class="aboutType flex" catchtap="copy" bindlongpress="copy" data-copy="123114563">
+        <image class="imgs" src="imgs/showIcon_02.png"></image>
+        <text class="text">123114563</text>
+      </div>
+      <div class="aboutType flex" catchtap="callPhone" data-phone="13975162438">
+        <image class="imgs" src="imgs/showIcon_03.png"></image>
+        <text class="text">13975162438</text>
+      </div>
+    </div>
+    <div class="showPanelBtn">
+      <div class="okBtn" onclick="$('#showContactUs').hide()" data-phone="13975162438">确定</div>
+    </div>
+  </div>
+</div>
+<div class="showMsgPanel" style="display: none;" id="showVipMsg">
+  <div class='content'>
+    <div class="title">咕咚会员说明</div>
+    <div class="ul">
+      <div class="li flex" style="border:none;margin-bottom:28rpx;">
+        <div class="radius"></div>
+        <div style="flex:1">用户需要注册账号购入项目成为项目股东，平台根据累计交易金额确定会员等级，不同的会员等级可享受到不同的会员福利。</div>
+      </div>
+      <div class="li flex" style="border:none;margin-bottom:28rpx;">
+        <div class="radius"></div>
+        <div style="flex:1">股东购入相应项目后平台向股东发放该项目的优惠券，作为消费抵消使用，不同等级的会员所享受的优惠券福利不同。</div>
+      </div>
+      <div class="li flex" style="border:none;margin-bottom:28rpx;">
+        <div class="radius"></div>
+        <div style="flex:1">会员等级升级制度如下：</div>
+      </div>
+      <div class="aboutType flex"><text class="text">白银：0-99999元</text></div>
+      <div class="aboutType flex"><text class="text">黄金：10万-99万元</text></div>
+      <div class="aboutType flex"><text class="text">铂金：100万-499万元</text></div>
+      <div class="aboutType flex"><text class="text">钻石：500万-999万元</text></div>
+      <div class="aboutType flex"><text class="text">至尊：1千万元以上</text></div>
+    </div>
+    <div class="showPanelBtn">
+      <div class="okBtn" onclick="$('#showVipMsg').hide()">确定</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div wx:if="{{QRShow == true}}" class="showMsgPanel" bindtap="qrSwitch">
+    <div class="qrcodeBox">
+      <canvas canvas-id="myQrcode" style="width:280px;height:280px;"></canvas>
+    </div>
+    
+</div> -->
+
+
+
+
+
+<!-- 登录框 -->
+<div id="loginShow" style="display: none;">
+  <div class='alert'>
+    <div class='content' style='margin-bottom:280px;'>
+      <div class='title'>登录</div>
+      <div>
+        <form bindsubmit='loginGo'>
+          <input class='item' placeholder='请输入手机号' name="pwd" password='true' type="text" style="width: 100%;" id="telNumber"></input>
+          <input class='item' placeholder='请输入登录密码' name="pwd" password='true' type="password" style="width: 100%;" id="password" maxlength="8" minlength="8"></input>
+          <div class='item clear'>
+            <a href="forget.html" class="button" style="float:left;color:#3495f9;margin-left:0;">忘记密码？</a>
+            <div class="button" style='color:#3495f9;' onclick="Login()">登录</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+	<footer>
+	</footer>
+
+
+
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script src="js/user.js"></script>
+<script type="text/javascript">
+	
+
+
+</script>
+</body>
+</html>

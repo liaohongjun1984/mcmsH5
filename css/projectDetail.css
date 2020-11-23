@@ -1,0 +1,202 @@
+@CHARSET "UTF-8";
+/*body{
+  background: #f2f2f4;
+  padding:25px 0 168px;
+  font-size: 22px;
+}*/
+.itemBox{
+  /* margin:0 25px; */
+  padding:25px;
+  /* border-radius: 15px; */
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 12px 10px -12px #666;
+  margin-bottom: 20px;
+  margin-top: 25px;
+}
+.itemBox .imgs{
+  width:200px;
+  height:200px;
+  margin-right: 28px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.itemBox .itemContent{
+  flex: 1;
+  height:200px;
+}
+
+.itemBox .title{
+  font-size: 30px;
+  margin-bottom: 13px;
+  font-weight: bolder;
+}
+.itemBox .tips{
+  font-size: 26px;
+  margin-bottom: 28px;
+  color: #666;
+  font-weight: bolder;
+}
+.itemBox .content{
+  font-size: 22px;
+  color: #999;
+}
+.contentBox{
+  padding:30px 25px;
+}
+.progressBox{
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+  border-radius: 20px;
+  position: relative;
+  width:100%;
+  overflow: hidden;
+  box-shadow: 0px 12px 10px -12px #666;
+}
+.progressBox .progress{
+  background: linear-gradient(#ffdb98, #fed17c, #f5c770);
+  border-radius: 20px;
+  position: absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:-100%;
+}
+.progressBox .text{
+  text-align: center;
+  position: absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  font-size: 22px;
+  color: #323232;
+}
+.appointmentSummary{
+  padding:25px 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.appointmentSummary .item{
+  flex:1;
+  text-align: center;
+}
+.appointmentSummary .title{
+  font-size: 20px;
+  color:#666;
+}
+.appointmentSummary .num{
+  font-size: 30px;
+  color: #000;
+  font-weight: bolder;
+}
+.appointmentSummary .line{
+  width: 2px;
+  height:40px;
+  background: #cfa344;
+}
+.aboutBox{
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 12px 10px -12px #666;
+  margin-bottom: 16px;
+  padding:20px 0;
+}
+.aboutBox .imgs{
+  width: 100%;
+}
+.aboutBox .h3{
+  font-weight: bolder;
+  font-size: 30px;
+  color: #323232;
+  /* margin-bottom: 30px; */
+  padding-left: 25px;
+}
+.aboutBox .showbox{
+  margin-top: 20px;
+  padding:0 26px;
+  display: none;
+}
+.aboutBox .showbox .p{
+  padding: 0px;
+}
+.aboutBox .showbox image{
+  margin-bottom: 20px;
+}
+.aboutBox .showbox.active{
+  display: block;
+}
+.aboutBox .item .arrow{
+  width: 36px;
+  height:36px;
+  margin-right: 25px;
+}
+.aboutBox .p{
+  font-size: 23.8px !important;
+  color: #666;
+  margin-bottom: 18px;
+  padding:0 45px;
+  text-indent: 2em;
+  max-height: 999999px;
+
+}
+.aboutBox .dataTable{
+  padding:0 10px;
+}
+.aboutBox .dataTable .item{
+  padding:0 10px;
+  line-height: 55px;
+  font-size: 24px;
+  border-bottom:1px solid #c1c1c1;
+}
+.aboutBox .dataTable .item:last-child{
+  border:none;
+}
+.aboutBox .dataTable .item .text{
+  padding:0 10px;
+  flex:1;
+  color: #323232;
+}
+.aboutBox .dataTable .item .action{
+  padding-right: 56px;
+  color: #cfa344;
+}
+
+.footer{
+  position: fixed;
+  bottom:0;
+  width:100%;
+  padding:40px 25px;
+  background: #fff;
+  display: flex;
+  box-sizing: border-box;
+  border-top: 1px solid #c1c1c1;
+}
+.footer .buyBtn{
+  flex:1;
+  line-height: 80px;
+  font-size: 30px;
+  font-weight: bolder;
+  display: inline-block;
+  border-radius: 10px;
+  text-align: center;
+  color: #cb9023;
+  background: linear-gradient(#ffdfa3, #fed587, #f9c871);
+  border:1px solid #efb961;
+}
+.showMsgPanel .content ,
+.showMsgPanel .content .title{
+  width: 650px;
+}
+.rotate{
+  transform: rotate(90deg);
+}
+.contentImages img{
+  width: 100%;
+}
+.itemBox .imgs img{
+  width: 100%;
+}

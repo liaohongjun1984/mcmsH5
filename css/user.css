@@ -1,0 +1,361 @@
+@CHARSET "UTF-8";
+/*body{
+  background: #f2f2f4;
+  padding:25px 0 168px;
+  font-size: 22px;
+}*/
+/*page{
+  background: #f2f2f4;
+}*/
+.line{
+  height:220px;
+  box-shadow: 2px 1px 20px -2px #666;
+  background: #fff;
+  /* position: relative; */
+}
+.line2{
+  position: absolute;
+  height:6px;
+  top:86px;
+  width: 100%;
+  box-shadow: 0px 1px 20px 0px #666;
+}
+.userBox{
+  margin:-200px 24px 0;
+  position: relative;
+}
+.userBg{
+  width:702px;
+  height:330px;
+}
+
+.userBox .userImgs{
+  width:150px;
+  height:150px;
+  position: absolute;
+  top: 33.8px;
+  left: 41.8px;
+  border-radius: 50%;
+  overflow:hidden;
+}
+.userBox .userImgs img{
+  width: 100%;
+}
+.userBox .userContent{
+  position: absolute;
+  top:232px;
+  left: 36px;
+}
+.userBox .userContent .item{
+  min-width:108px;
+  text-align: center;
+  display: inline-block;
+}
+.userBox .userContent .item .titile{
+  font-size: 29px;
+  font-weight: bolder;
+}
+.userBox .userContent .item .sub{
+  color: #323232;
+  font-size: 21px;
+  font-weight: bolder;
+}
+
+.userBox .userMsg{
+  position: absolute;
+  top:75px;
+  left: 228px;
+}
+.userBox .userMsg .name,
+.userBox .userMsg .tips{
+  font-size: 24px;
+  color: #ffdd9e;
+}
+.userBox .userMsg .tips{
+  font-size: 22px;
+}
+
+.userBox .vipBox{
+  position: absolute;
+  top:0;
+  left: 560px;
+  text-align: center;
+}
+.userBox .vipPic{
+  width:96px;
+  height:117px;
+}
+.userBox .vipBox .level,
+.userBox .vipBox .vip{
+  font-size: 18px;
+  color: #ffdd9f;
+  text-align: center;
+}
+.userBox .vipBox .vip{
+  font-size: 22px;
+}
+.userBtnBox{
+  margin:0px 25px 25px;
+}
+.userBtnBox .btn{
+  width: 159px;
+  line-height: 80px;
+  font-size: 30px;
+  font-weight: bolder;
+  display: inline-block;
+  border-radius: 10px;
+  margin-right: 18px;
+  text-align: center;
+  color: #cb9023;
+  background: linear-gradient(#ffdfa3, #fed587, #f9c871);
+  border:1px solid #efb961;
+  float: left;
+}
+.userBtnBox .btn:last-child{
+  margin-right:0;
+}
+.userBtnBox .btn.active{
+  color: #ffdea1;
+  border:1px solid #312c23;
+  background: linear-gradient(#5a5449, #554f44, #453f34);
+}
+
+.userInfo{
+  display: flex;
+  align-items: center;
+  height:200px;
+  padding:0 30px;
+  color: #fff;
+  background: url(data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABnCAYAAADBuCjOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD7SURBVChTdc/pTsJAFAXgedzi2imJiS/Bw7AVcGkEFQFZSqEUcUECGHf+amKGc8pYG4h/vtxz5s40FanRQIkD31XCHDaVsIK2EsmgQ7qIgxBPk/RJn7H3R18J6WFPeojS6+GpLjrT9RGJ5SJaLj5kdYI4so1Og2i2huRGs99EXHE9irgDDU4NrtRvCbv6Pag94O4VOllFJ6vozEt264yxfEHOHzV7FUTN5JfyVLN7NvsHh6dOOIGd0/kmJ09KbB+HPEe8xtk6eomTKGElUeREjAJWjMIbos2VFbxmv0d84DTPlZAcOiMbkWGX/sSUXihxaON/nTG6758vtQRuSj30HUgOSQAAAABJRU5ErkJggg==);
+  background-size: auto 100%
+}
+.userInfo image{
+  width:100px;
+  height:100px;
+  margin-right: 28px;
+  border-radius: 50%;
+}
+.name{
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.other{
+  font-size: 28px;
+  color: #eee;
+}
+.listBox{
+  line-height: 83px;
+  padding:0 30px;
+  border-bottom: 2px solid #f2f2f2;
+}
+.listBox .text{
+  height:83px;
+  color: #999;
+}
+.listBox image{
+  width:40px;
+  height:40px;
+}
+.userItem{
+  border-bottom:20px solid #f3f7f8
+}
+.userItem .item{
+  flex: 1;
+  padding:21px 0 25px;
+  text-align: center;
+}
+.userItem .item image{
+  width:56px;
+  height:56px;
+  margin-bottom: 12.5px;
+}
+
+.itemBox{
+  /* margin:0 25px; */
+  padding:25px;
+  /* border-radius: 15px; */
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 12px 10px -12px #666;
+  margin-bottom: 20px;
+}
+.itemBox .imgs{
+  width:200px;
+  height:200px;
+  margin-right: 28px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.itemBox .itemContent{
+  flex: 1;
+  height:200px;
+  position: relative;
+}
+
+.itemBox .itemContent .saleBtn{
+  width: 180px;
+  line-height: 80px;
+  font-size: 30px;
+  font-weight: bolder;
+  display: inline-block;
+  border-radius: 10px;
+  margin-right: 18px;
+  text-align: center;
+  color: #cb9023;
+  background: linear-gradient(#ffdfa3, #fed587, #f9c871);
+  border: 1px solid #efb961;
+  position: absolute;
+  right:0px;
+  top:52px;
+}
+
+
+.itemBox .title{
+  font-size: 30px;
+  margin-bottom: 28px;
+  font-weight: bolder;
+}
+.itemBox .tips{
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #747474;
+  font-weight: bolder;
+}
+.itemBox .content{
+  font-size: 22px;
+  color: #999;
+}
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row{
+  border-bottom:2px solid #d0a54a;
+  padding-left:25px;
+}
+.row div{
+  font-weight: bolder;
+  line-height: 78px;
+  font-size: 30px;
+}
+.row1,
+.row2{
+  border-bottom:2px solid #d0a54a;
+  padding-left:25px;
+}
+.row1 div,
+.row2 div{
+  font-weight: bolder;
+  line-height: 68px;
+  color: #666;
+  font-size: 25px;
+}
+.row1 .item,
+.row2 .item{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.row1{
+  background: #fff;
+}
+
+.Box{
+  /* margin:25px; */
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 12px 10px -12px #666;
+}
+.Box .content{
+  padding:10px 25px 80px;
+  line-height: 45px;
+  font-size: 30px;
+  font-weight: 500;
+}
+.Box .content .title{
+  color: #777;
+  display: inline-block;
+  font-weight: normal;
+}
+
+
+.btnBox{
+  margin-top: 20px;
+  position: relative;
+}
+.btnBox .btn1,
+.btnBox .btn2{
+  flex:1;
+  line-height: 85px;
+  font-size: 30px;
+  font-weight: bolder;
+  color: #fff;
+  /* background: #facb75; */
+  border:1px solid #daa44b;
+  text-align: center;
+  background: linear-gradient(#fed07a, #fbcc76, #e8b95f);
+}
+.btnBox .btn1{
+  border-bottom-left-radius: 15px;
+}
+.btnBox .btn2{
+  margin-left: 2px;
+  border-bottom-right-radius: 15px;
+}
+.btnBox button{
+  position:absolute;
+  height:100%;
+  width:50%;
+  top:0;
+  left:0;
+  opacity: 0;
+}
+/* 
+.btnBox button{
+  position: absolute;
+  height:100%;
+  width:50%;
+  top:0;
+  left:0;
+  opacity: 0;
+} */
+  
+
+.unsaleBtn{
+  width: 128px;
+  line-height: 68px;
+  font-size: 30px;
+  font-weight: bolder;
+  display: inline-block;
+  border-radius: 10px;
+  margin:20px 0;
+  text-align: center;
+  color: #cb9023 !important;
+  background: linear-gradient(#ffdfa3, #fed587, #f9c871);
+  border: 1px solid #efb961;
+
+}
+.contactUs{
+  position: fixed;
+  right:24px;
+  bottom:158px;
+  line-height: 52px;
+  padding:0 22px;
+  font-size: 26px;
+  color: #fff;
+  display: inline-block;
+  border-radius: 30px;
+  text-align: center;
+  background: linear-gradient(#fed07a, #facc76, #eabc62);
+  border: 1px solid #e0ad53;
+}
+
+
+
+
