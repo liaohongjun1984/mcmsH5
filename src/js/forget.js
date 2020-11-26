@@ -126,13 +126,9 @@ function countSixty (opt) {
         setTimeout(function() {settime(val)},1000);
     }
 }
-
-
 function forgetPassword(){
      /*第一步：验证手机号码*/
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-
-
     var code = $('#code').val();
     var password = $('#password').val();
     telNumber = $('#telNumber').val();
@@ -156,7 +152,6 @@ function forgetPassword(){
       showMsg('密码不能为空')
       return;
     }
-    
     $.ajax({
         type: 'put',
         url: '/api/forgetPassword.do',
