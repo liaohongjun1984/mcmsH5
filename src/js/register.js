@@ -1,5 +1,3 @@
-
-
 var reqId ='';
 var telNumber ='';
 function getDateRandom() {
@@ -36,10 +34,6 @@ function getCode() {
     if(telNumber.length != 11) {
         showMsg("手机号码错误")
         return;
-    }
-    if(!img_code){
-     showMsg("请输入图形验证码")
-     return;
     }
     $('#getCode').off('click');
     var opt = {
@@ -131,8 +125,6 @@ function countSixty (opt) {
 function forgetPassword(){
      /*第一步：验证手机号码*/
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-
-
     var code = $('#code').val();
     var password = $('#password').val();
     telNumber = $('#telNumber').val();
@@ -155,8 +147,7 @@ function forgetPassword(){
     if (password.length == 0) {
       showMsg('密码不能为空')
       return;
-    }
-    
+    }   
     $.ajax({
         type: 'put',
         url: '/api/forgetPassword.do',
@@ -169,7 +160,7 @@ function forgetPassword(){
         success: function (data) {
             console.log(data);
             if (data.success) {
-                showMsg('修改成功，请重新登录！');
+                showMsg('注册成功，请登录！');
                 setTimeout(function () {
                     location.href = "user.html";
                 },1500)
@@ -184,6 +175,4 @@ function forgetPassword(){
             }
         }
     });
-
-
 }

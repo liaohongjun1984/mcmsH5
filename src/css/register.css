@@ -50,6 +50,13 @@
   top:0;
   left:0;
 }
+/*修改验证码样式*/
+.register_getCode{
+  width:100%;
+  height:100%;
+  opacity: 0;
+  margin: 0 auto;
+}
 .form .box{
   padding:28px 0;
   border-top: 1px solid #e5e5e5;

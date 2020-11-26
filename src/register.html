@@ -15,28 +15,19 @@
 <body> 
 <div class="wrap">
 	<header>
-		咕咚
+		注册
 		<!-- <a href="user.html" class="back flex"><img src="imgs/right.png"></a> -->
 	</header>
 <!--pages/register/register.wxml-->
 <!-- 注册框 -->
-<div wx:if="{{getUser == false}}">
   <div class='tips' style="height:70px"> </div>
   <form bindsubmit="getCode">
     <div class='form'>
-      <div class='box' style='position: relative;border-top:none;display:flex;'>
-        <div style='width:486px;'>
-          <input  name="imgCode" placeholder="请输入图形验证码" type='text' focus='ture'/>
-        </div>
-        <div class='getImgCode' catchtap='getImgCode'>
-          <image class='imgCode' src='{{imgShow}}'></image>
-        </div> 
-      </div>  
       <div class='box clear' style='position: relative;display:flex;'>
         <div style='width:486px;border-right:1px solid #7cccc9;'>
-          <input  name="phone" placeholder="请输入您的手机号" maxlength='11' type='number' bindinput="setPhone" />
+          <input  name="phone" placeholder="请输入您的手机号" maxlength='11' type='number' bindinput="setPhone" id="telNumber"/>
         </div>
-        <div class='getCode'>
+        <div class='getCode' id="getCode"> 
           获取验证码
           <!-- <button form-type="submit" disabled='{{isClick}}'>{{time}}</button> -->
           <!-- <div form-type="submit">{{time}}</div> -->
@@ -48,28 +39,19 @@
   
   <form bindsubmit="formSubmit">
     <div class='form'>
-      <input wx:if="{{codeShow == true && codeTips.length < 10}}" class='box' name="code" placeholder="{{codeTips}}" /> 
-      <textarea wx:if="{{codeShow == true && codeTips.length > 10}}" class='box' name="code" placeholder="{{codeTips}}" ></textarea>
-      
       <!-- <input class='box' name="code" placeholder="{{codeTips}}" />  -->
-      <div wx:if="{{register == true}}">
     	<div class='box clear'>
-    		<input hidden='true' name="realName" value='' placeholder="请输入你的真实姓名"></input>
+    		<input hidden='true' name="code" value='' placeholder="请输入验证码" id="code"></input>
     	</div>
     	<div class='box clear'>
-    		<input hidden='true' name="idCard" value='' placeholder="请输入你的身份证号码"></input>
+    		<input hidden='true' name="nickName" value='' placeholder="请输入您的昵称" id="nickName"></input>
     	</div>
     	<div class='box clear'>
-    		<input hidden='true' name="wxAccount" value='' placeholder="请输入你的微信号"></input>
+    		<input hidden='true' name="pwd" value='' placeholder="请输入您的密码" maxlength='8' password="true" id="password"></input>
     	</div>
     	<div class='box clear'>
-    		<input hidden='true' name="pwd" value='' placeholder="请输入您的密码"></input>
+    		<input hidden='true' name="pwds" value='' placeholder="确认密码" maxlength='8' password="true" id="password2"></input>
     	</div>
-    	<div class='box clear'>
-    		<input hidden='true' name="pwds" value='' placeholder="确认密码"></input>
-    	</div>
-      </div>
-
     </div>
     <div  class="flex" style="padding:31.25px;">
       
@@ -81,7 +63,8 @@
       <navigator url="/pages/rule/rule" style="border-bottom: 1px solid #666;cursor: pointer;">用户协议</navigator>
       
     </div>
-    <div class='btn' form-type="submit">注册</div>
+    <!--<div class='btn' form-type="submit">注册</div>-->
+    <div class='btn' onclick="forgetPassword()">确定</div>
   </form>
   
 </div>
@@ -95,6 +78,7 @@
 
 <script src="js/jquery.js"></script>
 <script src="js/common.js"></script>
+<script src="js/register.js"></script>
 <script type="text/javascript">
 	
 
