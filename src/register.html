@@ -8,7 +8,6 @@
     <title>咕咚</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/forget.css">
-    <!-- <link rel="shortcut icon" href="./resource/images/favicon.ico" type="image/x-icon"> -->
     <style>
     </style>
 </head>
@@ -34,7 +33,6 @@
         </div>
         <div class='getCode' id="getCode">
         	获取验证码
-          <!-- <button form-type="submit">12222</button> -->
         </div> 
       </div>
     </div>
@@ -49,14 +47,23 @@
     		<input hidden='true' name="nickName" value='' placeholder="请输入您的昵称" id="nickName"></input>
     	</div>
       <div class='box clear'>
-    		<input hidden='true' name="pwd1" value='' placeholder="请输入您的密码" maxlength='8' password="true" id="password1"></input>
+    		<input hidden='true' name="pwd1" value='' placeholder="请输入您的密码" maxlength='8' password="true" id="password1" type="password"></input>
       </div>
       <div class='box clear'>
-    		<input hidden='true' name="pwd2" value='' placeholder="请确认您的密码" maxlength='8' password="true" id="password2"></input>
+    		<input hidden='true' name="pwd2" value='' placeholder="请确认您的密码" maxlength='8' password="true" id="password2" type="password"></input>
     	</div>
     </div>
-      
-    <div class='btn' onclick="register()">确定</div>
+    <div  class="flex" style="padding:31.25px;">
+      <checkbox-group name="rule">
+        <checkbox value="true"/>
+      </checkbox-group>
+      <form>
+        <input type="checkbox" name="select" id="select">
+      </form>
+      <text> 我已详细阅读并同意</text>
+      <navigator url="/pages/rule/rule" style="border-bottom: 1px solid #666;cursor: pointer;">用户协议</navigator>  
+    </div> 
+    <div class='btn' onclick="register()">注册</div>
   </form>
   
 </div>

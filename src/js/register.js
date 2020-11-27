@@ -129,6 +129,7 @@ function register(){
     var password1 = $('#password1').val();
     var password2 = $('#password2').val();
     telNumber = $('#telNumber').val();
+    var select
     if (telNumber.length == 0) {
       showMsg('手机号码不能为空')
       return;
@@ -149,9 +150,20 @@ function register(){
       showMsg('密码不能为空')
       return;
     }
+    if (password2.length == 0) {
+        showMsg('验证密码不能为空')
+        return;
+      }
     if(password1 != password2){
         showMsg('密码输入不一致')
     }
+    if(nickName.length == 0){
+        showMsg('请输入您的昵称')
+    }
+    // if(document.getElementById("select") == 0){
+    //     showMsg('请勾选服务协议')
+    // }
+    //之后还要解决是否与其他用户昵称重复问题
     $.ajax({
         type: 'put',
         url: '/api/regByTel.do',
@@ -167,7 +179,7 @@ function register(){
         success: function (data) {
             console.log(data);
             if (data.success) {
-                showMsg('注册成功，请登录！');
+                showMsg('注册成功，请登录');
                 setTimeout(function () {
                     location.href = "user.html";
                 },1500)
