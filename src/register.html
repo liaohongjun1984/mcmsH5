@@ -7,87 +7,66 @@
     <meta name="format-detection" content="email=no">
     <title>咕咚</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/register.css">
-    <!-- <link rel="shortcut icon" href="./resource/images/favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="css/forget.css">
     <style>
     </style>
 </head>
 <body> 
 <div class="wrap">
 	<header>
-		咕咚
-		<!-- <a href="user.html" class="back flex"><img src="imgs/right.png"></a> -->
+		注册
+		<a href="user.html" class="back flex"><img src="imgs/right.png"></a>
 	</header>
-<!--pages/register/register.wxml-->
-<!-- 注册框 -->
-<div wx:if="{{getUser == false}}">
-  <div class='tips' style="height:70px"> </div>
   <form bindsubmit="getCode">
     <div class='form'>
       <div class='box' style='position: relative;border-top:none;display:flex;'>
         <div style='width:486px;'>
-          <input  name="imgCode" placeholder="请输入图形验证码" type='text' focus='ture'/>
+          <input  name="imgCode" placeholder="请输入图形验证码" type='text' focus='ture'  id="imgCode"/>
         </div>
         <div class='getImgCode' catchtap='getImgCode'>
-          <image class='imgCode' src='{{imgShow}}'></image>
+          <img class='imgCode' src="">
         </div> 
       </div>  
       <div class='box clear' style='position: relative;display:flex;'>
         <div style='width:486px;border-right:1px solid #7cccc9;'>
-          <input  name="phone" placeholder="请输入您的手机号" maxlength='11' type='number' bindinput="setPhone" />
+          <input  name="phone" placeholder="请输入您的手机号" maxlength='11' type='number' bindinput="setPhone" id="telNumber" />
         </div>
-        <div class='getCode'>
-          获取验证码
-          <!-- <button form-type="submit" disabled='{{isClick}}'>{{time}}</button> -->
-          <!-- <div form-type="submit">{{time}}</div> -->
+        <div class='getCode' id="getCode">
+        	获取验证码
         </div> 
-        <!-- <button class='getCode' form-type="submit" disabled='{{isClick}}' style='flex:1;'>{{time}}</button>  -->
       </div>
     </div>
   </form>
   
   <form bindsubmit="formSubmit">
     <div class='form'>
-      <input wx:if="{{codeShow == true && codeTips.length < 10}}" class='box' name="code" placeholder="{{codeTips}}" /> 
-      <textarea wx:if="{{codeShow == true && codeTips.length > 10}}" class='box' name="code" placeholder="{{codeTips}}" ></textarea>
-      
-      <!-- <input class='box' name="code" placeholder="{{codeTips}}" />  -->
-      <div wx:if="{{register == true}}">
     	<div class='box clear'>
-    		<input hidden='true' name="realName" value='' placeholder="请输入你的真实姓名"></input>
+    		<input hidden='true' name="code" value='' placeholder="请输入验证码" id="code"></input>
     	</div>
     	<div class='box clear'>
-    		<input hidden='true' name="idCard" value='' placeholder="请输入你的身份证号码"></input>
+    		<input hidden='true' name="nickName" value='' placeholder="请输入您的昵称" id="nickName"></input>
     	</div>
-    	<div class='box clear'>
-    		<input hidden='true' name="wxAccount" value='' placeholder="请输入你的微信号"></input>
-    	</div>
-    	<div class='box clear'>
-    		<input hidden='true' name="pwd" value='' placeholder="请输入您的密码"></input>
-    	</div>
-    	<div class='box clear'>
-    		<input hidden='true' name="pwds" value='' placeholder="确认密码"></input>
-    	</div>
+      <div class='box clear'>
+    		<input hidden='true' name="pwd1" value='' placeholder="请输入您的密码" maxlength='8' password="true" id="password1" type="password"></input>
       </div>
-
+      <div class='box clear'>
+    		<input hidden='true' name="pwd2" value='' placeholder="请确认您的密码" maxlength='8' password="true" id="password2" type="password"></input>
+    	</div>
     </div>
     <div  class="flex" style="padding:31.25px;">
-      
       <checkbox-group name="rule">
         <checkbox value="true"/>
       </checkbox-group>
-      
+      <form>
+        <input type="checkbox" name="select" id="select">
+      </form>
       <text> 我已详细阅读并同意</text>
-      <navigator url="/pages/rule/rule" style="border-bottom: 1px solid #666;cursor: pointer;">用户协议</navigator>
-      
-    </div>
-    <div class='btn' form-type="submit">注册</div>
+      <navigator url="/pages/rule/rule" style="border-bottom: 1px solid #666;cursor: pointer;">用户协议</navigator>  
+    </div> 
+    <div class='btn' onclick="register()">注册</div>
   </form>
   
 </div>
-
-
-
 
 
 
@@ -95,6 +74,7 @@
 
 <script src="js/jquery.js"></script>
 <script src="js/common.js"></script>
+<script src="js/register.js"></script>
 <script type="text/javascript">
 	
 
@@ -102,3 +82,4 @@
 </script>
 </body>
 </html>
+

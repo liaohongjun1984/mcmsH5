@@ -24,7 +24,6 @@ $(document).ready(function(){
     //     $("#aId").val(getCookie("identity"));
     // }
 })
-
 function getCode() {
     telNumber = $('#telNumber').val();
     var img_code = $('#imgCode').val();
@@ -35,10 +34,6 @@ function getCode() {
     if(telNumber.length != 11) {
         showMsg("手机号码错误")
         return;
-    }
-    if(!img_code){
-     showMsg("请输入图形验证码")
-     return;
     }
     $('#getCode').off('click');
     var opt = {
@@ -127,14 +122,14 @@ function countSixty (opt) {
 }
 
 
-function forgetPassword(){
+function register(){
      /*第一步：验证手机号码*/
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-
-
     var code = $('#code').val();
-    var password = $('#password').val();
+    var password1 = $('#password1').val();
+    var password2 = $('#password2').val();
     telNumber = $('#telNumber').val();
+    var select
     if (telNumber.length == 0) {
       showMsg('手机号码不能为空')
       return;
@@ -151,24 +146,40 @@ function forgetPassword(){
       showMsg('验证码不能为空')
       return;
     }
-    if (password.length == 0) {
+    if (password1.length == 0) {
       showMsg('密码不能为空')
       return;
     }
-    
+    if (password2.length == 0) {
+        showMsg('验证密码不能为空')
+        return;
+      }
+    if(password1 != password2){
+        showMsg('密码输入不一致')
+    }
+    if(nickName.length == 0){
+        showMsg('请输入您的昵称')
+    }
+    // if(document.getElementById("select") == 0){
+    //     showMsg('请勾选服务协议')
+    // }
+    //之后还要解决是否与其他用户昵称重复问题
     $.ajax({
         type: 'put',
-        url: '/api/forgetPassword.do',
+        url: '/api/regByTel.do',
         dataType:"json",
         data: {
-            telNumber: telNumber,
-            newPassword: password,
-            code: code
+            tel: telNumber,
+            pwd: password1,
+            code: code,
+            nickName: nickName,
+            ald:0,
+            thirdTag:0
         },
         success: function (data) {
             console.log(data);
             if (data.success) {
-                showMsg('修改成功，请重新登录！');
+                showMsg('注册成功，请登录');
                 setTimeout(function () {
                     location.href = "user.html";
                 },1500)
