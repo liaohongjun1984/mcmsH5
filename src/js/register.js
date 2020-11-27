@@ -128,8 +128,8 @@ function register(){
     var code = $('#code').val();
     var password1 = $('#password1').val();
     var password2 = $('#password2').val();
+    var nickName = $('#nickName').val();
     telNumber = $('#telNumber').val();
-    var select
     if (telNumber.length == 0) {
       showMsg('手机号码不能为空')
       return;
