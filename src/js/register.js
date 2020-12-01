@@ -37,7 +37,7 @@ function getCode() {
     }
     $('#getCode').off('click');
     var opt = {
-        countTime: 120,
+        countTime: 60,
         getContent: "获取验证码",
         reGetContent: "重新获取",
         sC: '',
@@ -165,7 +165,7 @@ function register(){
     // }
     //之后还要解决是否与其他用户昵称重复问题
     $.ajax({
-        type: 'put',
+        type: 'post',
         url: '/api/regByTel.do',
         dataType:"json",
         data: {
@@ -173,8 +173,8 @@ function register(){
             pwd: password1,
             code: code,
             nickName: nickName,
-            ald:0,
-            thirdTag:0
+            aId: 275,
+            thirdTag: 0
         },
         success: function (data) {
             console.log(data);
