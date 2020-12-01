@@ -43,11 +43,10 @@ function selecTab(num){
     if(num == 0){
         for(var i = 0;i < imgArr.length;i++){
           if(imgArr[i].indexOf("mp4") > -1 || imgArr[i].indexOf("html") > -1){
-            
-            html += '<video width="648" height="364.25" controls>';
+            html += '<iframe width=frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=d3130u6gi2w" allowfullscreen="true" width:"400" height="700">';
             html += '  <source src="'+ imgArr[i] +'" type="">';
             html += '  您的浏览器不支持 HTML5 video 标签。';
-            html += '</video>';
+            html += '</iframe>';
 
           }else{
             html += '<img src="'+ imgArr[i] +'">';
@@ -119,7 +118,6 @@ function listProjects(page) {
                     html += '        <div class="content">'+ n.description +'</div>';
                     html += '    </div>';
                     html += '</a>';
-
                 })
                 if(page == 0){
                     $(".list").html(html);
@@ -132,7 +130,6 @@ function listProjects(page) {
         }
     });
 }
-
 function getProject() {
     if(!getURLPara("id")){
         showMsg("数据错误")
