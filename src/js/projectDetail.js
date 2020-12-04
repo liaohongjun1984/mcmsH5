@@ -43,8 +43,7 @@ function selecTab(num){
     if(num == 0){
         for(var i = 0;i < imgArr.length;i++){
           if(imgArr[i].indexOf("mp4") > -1 || imgArr[i].indexOf("html") > -1){
-            html += '<iframe width=frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=d3130u6gi2w" allowfullscreen="true" width:"400" height="700">';
-            html += '  <source src="'+ imgArr[i] +'" type="">';
+            html += '<iframe src="'+ imgArr[i] +'" width=647&amp;height=375&amp;auto=0 allowFullScreen="true" frameborder="0" height="375" width="647" type="">';
             html += '  您的浏览器不支持 HTML5 video 标签。';
             html += '</iframe>';
 
@@ -64,8 +63,6 @@ function selecTab(num){
                 // 'msg[0]'
                 // html2 += '    <div class="action">点击打开</div>';
                 html2 += '    <a href="'+ msg[0] +'"><div class="action">点击打开</div></a>';
-
-
                 html2 += '</div>';
             }
 
@@ -79,8 +76,17 @@ function selecTab(num){
     }else{
         for(var i = 0;i < imgArr3.length;i++){
             html3 = '<img class="imgs" src="'+ imgArr3[i] +'">';
+            if(i==0){
+                $("#teamIntro1").html(html3);
+            }   
+            if(i==1){
+                $("#teamIntro2").html(html3);
+            }
+            if(i==2){
+                $("#teamIntro3").html(html3);
+            }
         }
-        $("#teamIntro").html(html3);
+        ;
     }
 
 
