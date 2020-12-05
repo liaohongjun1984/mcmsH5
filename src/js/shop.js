@@ -161,7 +161,6 @@ function buyShopGo(){
             shareCount:selectNum,
             price:project.curPrice,
         },
-
         headers: {
             'Authorization': "BASIC " + getCookie("token")
         },
