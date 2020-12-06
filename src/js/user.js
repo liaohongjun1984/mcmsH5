@@ -624,42 +624,42 @@ function saleShare() {
 //3
 
 //存储
-function setCookie(cname, cvalue, exdays = 0) {
-    cvalue = encodeURIComponent(JSON.stringify(cvalue));
-    if (exdays > 0) {
-      var d = new Date().getTime() + exdays * 24 * 3600 * 1000 + 8 * 3600 * 1000;
-      var expires = "expires=" + new Date(d).toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    } else {
-      document.cookie = cname + "=" + cvalue + ";" + ";path=/";
-    }
-}
-//获取
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(";");
-        var c = ca[i];
-    for (var i = 0; i < ca.length; i++) {
-        while (c.charAt(0) == " ") {
-        c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-        let d = c.substring(name.length, c.length);
-        return JSON.parse(decodeURIComponent(d));
-        }
-    }
-    return "";
-}
+// function setCookie(cname, cvalue, exdays = 0) {
+//     cvalue = encodeURIComponent(JSON.stringify(cvalue));
+//     if (exdays > 0) {
+//       var d = new Date().getTime() + exdays * 24 * 3600 * 1000 + 8 * 3600 * 1000;
+//       var expires = "expires=" + new Date(d).toUTCString();
+//       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+//     } else {
+//       document.cookie = cname + "=" + cvalue + ";" + ";path=/";
+//     }
+// }
+// //获取
+// function getCookie(cname) {
+//     var name = cname + "=";
+//     var ca = document.cookie.split(";");
+//         var c = ca[i];
+//     for (var i = 0; i < ca.length; i++) {
+//         while (c.charAt(0) == " ") {
+//         c = c.substring(1);
+//         }
+//         if (c.indexOf(name) == 0) {
+//         let d = c.substring(name.length, c.length);
+//         return JSON.parse(decodeURIComponent(d));
+//         }
+//     }
+//     return "";
+// }
 
-//删除
-function deleteCookie(name) {
-    var date = new Date();
-    date.setTime(date.getTime() - 1);
-    var delValue = getCookie(name);
-    if (delValue) {
-        document.cookie = name + "=" + delValue + ";expires=" + date.toGMTString();
-    }
-} 
+// //删除
+// function deleteCookie(name) {
+//     var date = new Date();
+//     date.setTime(date.getTime() - 1);
+//     var delValue = getCookie(name);
+//     if (delValue) {
+//         document.cookie = name + "=" + delValue + ";expires=" + date.toGMTString();
+//     }
+// } 
   
 
   
