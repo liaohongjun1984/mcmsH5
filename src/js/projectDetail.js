@@ -43,11 +43,9 @@ function selecTab(num){
     if(num == 0){
         for(var i = 0;i < imgArr.length;i++){
           if(imgArr[i].indexOf("mp4") > -1 || imgArr[i].indexOf("html") > -1){
-            
-            html += '<video width="648" height="364.25" controls>';
-            html += '  <source src="'+ imgArr[i] +'" type="">';
+            html += '<iframe src="'+ imgArr[i] +'" width=647&amp;height=375&amp;auto=0 allowFullScreen="true" frameborder="0" height="375" width="647" type="">';
             html += '  您的浏览器不支持 HTML5 video 标签。';
-            html += '</video>';
+            html += '</iframe>';
 
           }else{
             html += '<img src="'+ imgArr[i] +'">';
@@ -65,8 +63,6 @@ function selecTab(num){
                 // 'msg[0]'
                 // html2 += '    <div class="action">点击打开</div>';
                 html2 += '    <a href="'+ msg[0] +'"><div class="action">点击打开</div></a>';
-
-
                 html2 += '</div>';
             }
 
@@ -80,8 +76,17 @@ function selecTab(num){
     }else{
         for(var i = 0;i < imgArr3.length;i++){
             html3 = '<img class="imgs" src="'+ imgArr3[i] +'">';
+            if(i==0){
+                $("#teamIntro1").html(html3);
+            }   
+            if(i==1){
+                $("#teamIntro2").html(html3);
+            }
+            if(i==2){
+                $("#teamIntro3").html(html3);
+            }
         }
-        $("#teamIntro").html(html3);
+        ;
     }
 
 
@@ -119,7 +124,6 @@ function listProjects(page) {
                     html += '        <div class="content">'+ n.description +'</div>';
                     html += '    </div>';
                     html += '</a>';
-
                 })
                 if(page == 0){
                     $(".list").html(html);
@@ -132,7 +136,6 @@ function listProjects(page) {
         }
     });
 }
-
 function getProject() {
     if(!getURLPara("id")){
         showMsg("数据错误")

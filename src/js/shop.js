@@ -161,7 +161,6 @@ function buyShopGo(){
             shareCount:selectNum,
             price:project.curPrice,
         },
-
         headers: {
             'Authorization': "BASIC " + getCookie("token")
         },
@@ -169,7 +168,6 @@ function buyShopGo(){
         success: function(data) {
             if (data.success) {
                 showMsg("购买成功");
-                
                 location.href="transaction.html";
             } else {
                 alert(data.message)

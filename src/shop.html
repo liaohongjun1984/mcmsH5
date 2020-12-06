@@ -22,6 +22,7 @@
 <div class="showTable" style="min-height: 150px;">
   
 </div>
+
 <!-- <div class="row flex">
   <div style="width:180px">餐厅</div>
   <div style="width:80px">份额</div>
@@ -67,7 +68,7 @@
         <!-- {{info.shareAmount}}份 -->
       </div>
       
-      <div wx:if="{{BID == 'false'}}">
+      <div>
         <div class="title">
           <div class="flex">
             单<text style="flex:1;"></text>价：
@@ -95,7 +96,7 @@
         <!-- {{info.sellerHide}} -->
       </div>
 
-      <div wx:if="{{BID == 'false'}}">
+      <div>
         <div class="title">
           <div class="flex">
             总<text style="flex:1;"></text>价：
@@ -113,7 +114,7 @@
         {{info.bidderHide == undefined ? '- - -':info.bidderHide}}
       </div> -->
 
-      <div wx:if="{{BID == 'false'}}">
+      <div>
         <div class="title">
           <div class="flex">
             挂<text style="flex:1;"></text>单<text style="flex:1;"></text>时<text style="flex:1;"></text>间：
@@ -131,7 +132,7 @@
         {{info.bidtimer}}
       </div> -->
 
-      <div wx:if="{{BID == 'false'}}">
+      <div>
         <div class='shop-number'>
           <div class="title">
             <div class="flex">
@@ -146,7 +147,7 @@
         </div>
       </div>
 
-      <div wx:if="{{BID == 'false'}}">
+      <div>
         <div class="title">
           <div class="flex">
             所<text style="flex:1;"></text>需<text style="flex:1;"></text>金<text style="flex:1;"></text>额：
@@ -190,7 +191,7 @@
     </div>
     <div class="btnBox flex">
       <div class="btn1" onclick="buyProjectShare()">购买份额</div>
-      <div class="btn2" >取消</div>
+      <div class="btn2"><a href="transaction.html">取消</a></div><!--自定义返回页面-->
     </div>
   </form>
 </div>
@@ -226,6 +227,6 @@
 <script src="js/common.js"></script>
 <script src="js/shop.js"></script>
 <script type="text/javascript">
-</script>
+</script>.
 </body>
 </html>

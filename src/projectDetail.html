@@ -66,7 +66,10 @@
 	        <div class="contentImages">
 	        </div>
 	      </div>
-	      <div style="margin:10px 25px;border-bottom:1px solid #c1c1c1;"></div>
+		  <div style="margin:10px 25px;border-bottom:1px solid #c1c1c1;"></div>
+		  <!-- <div>
+			  <iframe frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=d3130u6gi2w" allowfullscreen="true"></iframe>
+		  </div> -->
 	    </div>
 	    <!-- 经营报表 -->
 	    <div class="item">
@@ -94,26 +97,31 @@
 	      <div class="h3 flex" onclick="selecTab(2)">
 	        <div style="flex:1;">团队介绍</div>
 	        <img src="imgs/arrow_right.png" class="arrow" alt="">
-	      </div>
-	      <div class="showbox" id="teamIntro">
-	      	<!-- <img class="imgs" src=""></img> -->
-	      </div>
-	      
+		  </div>
+		  <div class="showbox">
+			<div class="showbox1" id="teamIntro1">
+			</div>
+			<div class="showbox2" id="teamIntro2">
+			</div>
+			<div class="showbox3" id="teamIntro3">
+			</div>
+		  </div>  
 	    </div>
 	  </div>
 	</div>
 
 	<!-- 更多报表 -->
-	<div wx:if="{{ShowOperatingReport == true}}" bindtap="ShowOperatingReport" class="showMsgPanel" style="display: none;">
+	<!--删除wx:if2-->
+	<div bindtap="ShowOperatingReport" class="showMsgPanel" style="display: none;">
 	  <div class='content' catchtap="ShowOperatingReport2">
 	    <div class="title">经营报表</div>
 	    <div class="ul">
-	      <div class="li flex" wx:for="{{businessDataImage}}" wx:key="images" data-src="{{item.src}}" bindtap="lookFile" wx:if="{{index >= tablePage*showTableNum && index < (tablePage+1)*showTableNum }}">
+	      <div class="li flex" wx:for="{{businessDataImage}}" wx:key="images" data-src="{{item.src}}" bindtap="lookFile">
 	      <!--   -->
 	        <div class="radius"></div>
 	        <div style="flex:1">{{item.name}}</div>
 	      </div>
-	    </div>
+	    </div> 
 	    
 	    <div class="btnBox flex">
 	      <div class="btn1" style="border-radius:0;opacity:{{tableBtn1 == true ? '1':'0.6'}};" catchtap="lookTablePageGoUp" data-btn="0">上一页</div>
@@ -206,7 +214,6 @@
 	</video> -->
 
 	<!-- <video src="https://v.qq.com/x/cover/mzc00200ce4e8gi/d3130u6gi2w.html;https://v.qq.com/x/page/v00347mnrse.html"></video> -->
-
 </div>
 
 <script src="js/jquery.js"></script>
