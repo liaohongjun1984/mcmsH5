@@ -581,7 +581,7 @@ function repace_acc(Money){
 }
 
 //退出浏览器自动清除cookie
-window.onbeforeunload=delCookie;
+window.onunload=delCookie;
 function delCookie(name){
     var exp=new Date();
     exp.setTime(exp.getTime()-1);
@@ -589,7 +589,10 @@ function delCookie(name){
     if(cval!=null)
         document.cookie=name+"="+cval+";expires"+exp.toGMTString();
 }
-delCookie("token");
+//alert("unload event detected!");
+    //var name = "Bob";
+   // console.log("The name is: " + name);
+//delCookie("token");
 
 
 
