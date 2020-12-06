@@ -580,7 +580,17 @@ function repace_acc(Money){
     return outmoney
 }
 
-//2020123挂单取消按钮功能
+//退出浏览器自动清除cookie
+window.onbeforeunload=delCookie;
+function delCookie(name){
+    var exp=new Date();
+    exp.setTime(exp.getTime()-1);
+    var cval=getCookie(name);
+    if(cval!=null)
+        document.cookie=name+"="+cval+";expires"+exp.toGMTString();
+}
+delCookie("token");
+
 
 
 
