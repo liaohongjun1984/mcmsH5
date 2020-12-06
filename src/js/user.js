@@ -593,55 +593,75 @@ function saleShare() {
 }
 
 //清除cookie
-var Cookies = {};
- 
-//设置Cookies。
-Cookies.setValue = function (name, value) {
-    var argv = arguments;
-    var argc = arguments.length;
-    var expires = (argc > 2) ? argv[2] : null;
-    var path = (argc > 3) ? argv[3] : '/';
-    var domain = (argc > 4) ? argv[4] : null;
-    var secure = (argc > 5) ? argv[5] : false;
-    document.cookie = name + "=" + escape(value) +
-       ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
-       ((path == null) ? "" : ("; path=" + path)) +
-       ((domain == null) ? "" : ("; domain=" + domain)) +
-       ((secure == true) ? "; secure" : "");
-};
-//读取Cookies。
-Cookies.getValue = function (name) {
-    var arg = name + "=";
-    var alen = arg.length;
-    var clen = document.cookie.length;
-    var i = 0;
-    var j = 0;
-    while (i < clen) {
-        j = i + alen;
-        if (document.cookie.substring(i, j) == arg)
-            return Cookies.getCookieVal(j);
-        i = document.cookie.indexOf(" ", i) + 1;
-        if (i == 0)
-            break;
+//1
+// window.onbeforeunload = function (){
+//     if(window.event.clientY>0||window.event.altKey){
+//         window.onbeforeunload = null;
+//     }else{
+//         alert("推出系统"),
+//         $.ajax({
+//             type:"post",
+//             url:"main?action=logout",
+//             data:"",
+//             success:function (data){
+//             }
+//         }
+//         );
+//     }
+// }
+//2
+// function addCookie(objName,objValue,objHours)
+// {
+//     var str = objName + "=" + escape(objValue);
+//     if(objHours > 0){//等于0时，关闭浏览器自动清除Cookies.
+//         var date = new Date();
+//         var ms = objHours*3600*1000;
+//         date.setTime(date.getTime() + ms);
+//         str += "; expires=" + date.toGMTString();
+//     }
+//     document.cookie = str;
+// }
+//3
+
+//存储
+function setCookie(cname, cvalue, exdays = 0) {
+    cvalue = encodeURIComponent(JSON.stringify(cvalue));
+    if (exdays > 0) {
+      var d = new Date().getTime() + exdays * 24 * 3600 * 1000 + 8 * 3600 * 1000;
+      var expires = "expires=" + new Date(d).toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    } else {
+      document.cookie = cname + "=" + cvalue + ";" + ";path=/";
     }
-    return null;
-};
-//清除Cookies。
-Cookies.clear = function (name) {
-    if (Cookies.getValue(name)) {
-        var expdate = new Date();
-        expdate.setTime(expdate.getTime() - (86400 * 1000 * 1));
-        Cookies.setValue(name, "", expdate);
+}
+//获取
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(";");
+        var c = ca[i];
+    for (var i = 0; i < ca.length; i++) {
+        while (c.charAt(0) == " ") {
+        c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+        let d = c.substring(name.length, c.length);
+        return JSON.parse(decodeURIComponent(d));
+        }
     }
-};
- 
-//获取Cookies值。
-Cookies.getCookieVal = function (offset) {
-    var endstr = document.cookie.indexOf(";", offset);
-    if (endstr == -1) {
-        endstr = document.cookie.length;
+    return "";
+}
+
+//删除
+function deleteCookie(name) {
+    var date = new Date();
+    date.setTime(date.getTime() - 1);
+    var delValue = getCookie(name);
+    if (delValue) {
+        document.cookie = name + "=" + delValue + ";expires=" + date.toGMTString();
     }
-    return unescape(document.cookie.substring(offset, endstr));
-};
+} 
+  
+
+  
 //userShopName
 //userShopNum
