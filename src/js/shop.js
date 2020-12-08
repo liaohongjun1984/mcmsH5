@@ -107,11 +107,17 @@ function getShareMarket() {
                 }
                 showTable(obj);
 
+                var price = obj.curPrice;
+                if(obj.marketType == "BID"){
+                    if(obj.curPrice == 0){
+                        price = obj.baseBidPrice;
+                    }
+                }
                 $(".showName").html(obj.name);
                 $(".showShareAmount").html(obj.shareAmount);
-                $(".showCurPrice").html(obj.curPrice);
-                $(".showNeedPrice").html(obj.curPrice);
-                $(".showTotalPrice").html(obj.curPrice * obj.shareAmount);
+                $(".showCurPrice").html(price);
+                $(".showNeedPrice").html(price  * obj.shareAmount);
+                $(".showTotalPrice").html(price * obj.shareAmount);
                 $(".showSellerHide").html(obj.sellerHide);
                 $(".showDate").html(new Date(obj.createDate).Format('yyyy-MM-dd'));
 
