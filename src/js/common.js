@@ -581,14 +581,6 @@ function repace_acc(Money){
 }
 
 //退出浏览器自动清除cookie
-window.onunload=delCookie;
-function delCookie(name){
-    var exp=new Date();
-    exp.setTime(exp.getTime()-1);
-    var cval=getCookie(name);
-    if(cval!=null)
-        document.cookie=name+"="+cval+";expires"+exp.toGMTString();
-}
 //alert("unload event detected!");
     //var name = "Bob";
    // console.log("The name is: " + name);
