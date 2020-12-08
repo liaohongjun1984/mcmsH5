@@ -113,6 +113,8 @@ function getShareMarket() {
                         price = obj.baseBidPrice;
                     }
                 }
+                project.price = price;
+                
                 $(".showName").html(obj.name);
                 $(".showShareAmount").html(obj.shareAmount);
                 $(".showCurPrice").html(price);
@@ -165,7 +167,7 @@ function buyShopGo(){
         data: {
             marketId:project.id,
             shareCount:selectNum,
-            price:project.curPrice,
+            price:project.price,
         },
         headers: {
             'Authorization': "BASIC " + getCookie("token")
