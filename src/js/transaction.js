@@ -138,6 +138,8 @@ function listShareMarket(page) {
                         var price = 0.0;
                         if(n.curPrice == 0){
                             price =  n.baseBidPrice;
+                        }else{
+                            price =  n.curPrice;
                         }
 
                         html += '<a href="shop.html?id='+ n.id+'">';

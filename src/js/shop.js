@@ -111,6 +111,8 @@ function getShareMarket() {
                 if(obj.marketType == "BID"){
                     if(obj.curPrice == 0){
                         price = obj.baseBidPrice;
+                    }else{
+                        price = obj.curPrice;
                     }
                 }
                 project.price = price;
