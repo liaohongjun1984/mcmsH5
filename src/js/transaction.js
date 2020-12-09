@@ -122,7 +122,6 @@ function listShareMarket(page) {
                     if (i % 2 == 0) {
                         rowClass = 'row1';
                     }
-
                     if(typeTag == 'ONEPRICE'){
                         html += '<a href="shop.html?id='+ n.id+'">';
                         html += '<div class="'+ rowClass +' flex">';
@@ -136,12 +135,16 @@ function listShareMarket(page) {
                     }else{
 
 
+                        var price = 0.0;
+                        if(n.curPrice == 0){
+                            price =  n.baseBidPrice;
+                        }
 
                         html += '<a href="shop.html?id='+ n.id+'">';
                         html += '<div class="'+ rowClass +' flex">';
                         html += '    <div style="width:160px">'+ n.name +'</div>';
                         html += '    <div style="width:70px">'+ n.shareAmount +'</div>';
-                        html += '    <div style="width:130px">'+ n.curPrice +'</div>';
+                        html += '    <div style="width:130px">'+ price +'</div>';
                         if(stat == 0){
                             html += '    <div style="width:80px">'+ n.sellerHide +'</div>';
                             html += '    <div style="width:140px">当前最高出价</div>';

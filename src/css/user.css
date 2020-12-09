@@ -341,10 +341,7 @@
   border: 1px solid #efb961;
 
 }
-.contactUs{
-  position: fixed;
-  right:24px;
-  bottom:158px;
+.contactUs,.exit{
   line-height: 52px;
   padding:0 22px;
   font-size: 26px;
@@ -353,9 +350,18 @@
   border-radius: 30px;
   text-align: center;
   background: linear-gradient(#fed07a, #facc76, #eabc62);
-  border: 1px solid #e0ad53;
 }
-
+.contactUs{
+  position: fixed;
+  right:24px;
+  bottom:158px;
+}
+/*退出登录功能实现*/
+.exit{
+  position: absolute;
+  left: 228px;
+  top: 150px;
+}
 
 
 
