@@ -6,8 +6,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="email=no">
     <title>咕咚</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/transaction.css">
+    <link rel="stylesheet" href="css/common.css?v=202012091608">
+    <link rel="stylesheet" href="css/transaction.css?v=202012091608">
     <!-- <link rel="shortcut icon" href="./resource/images/favicon.ico" type="image/x-icon"> -->
     <style>
     </style>
@@ -42,31 +42,31 @@
 	<div class="showList">
 	  
 	</div>
-	<div wx:if="{{projectList.length > 0}}" style="display: none;">
+	<div style="display: none;">
 	<!-- <div wx:if="{{projectList.length > 0}}" style="margin-bottom:{{bidCount > 0 ? '128':'150'}}px;"> -->
-	  <div class="row flex" wx:if="{{projectList.length > 0}}">
+	  <div class="row flex">
 	    <div style="width:160px">餐厅</div>
 	    <div style="width:70px">份额</div>
-	    <div style="width:130px" wx:if="{{ONEPRICE == true}}">单价</div>
-	    <div style="width:130px" wx:else>{{BIDCHECK == 0 ? '现价':'成交价'}}</div>
+	    <div style="width:130px">单价</div>
+	    <div style="width:130px">{{BIDCHECK == 0 ? '现价':'成交价'}}</div>
 
-	    <div style="width:180px" wx:if="{{ONEPRICE == true}}">总价</div>
-	    <div style="width:80px" wx:else>{{BIDCHECK == 0 ? '出售者':'竞拍者'}}</div>
+	    <div style="width:180px">总价</div>
+	    <div style="width:80px">{{BIDCHECK == 0 ? '出售者':'竞拍者'}}</div>
 	    
-	    <div style="width:140px" wx:if="{{ONEPRICE == false && BIDCHECK == 0}}">当前最高出价</div>
+	    <div style="width:140px">当前最高出价</div>
 	    <div style="flex:1;text-align: right;">{{ONEPRICE == true ? '挂单时间':'结束时间'}}</div>
 	  </div>
 
-	  <navigator class="{{index%2 == 0 ? 'row1':'row2'}} flex" wx:for="{{projectList}}" wx:key="projectList"  url='/pages/shop/shop?id={{item.id}}&BID={{BID}}'>
+	  <navigator class="{{index%2 == 0 ? 'row1':'row2'}} flex" url='/pages/shop/shop?id={{item.id}}&BID={{BID}}'>
 	    <div style="width:160px">{{item.name}}</div>
 	    <div style="width:70px">{{item.shareAmount}}份</div>
 
-	    <div wx:if="{{ONEPRICE == true}}" style="width:130px">￥{{item.curPrice / item.shareAmount}}</div>
-	    <div wx:else style="width:130px">￥{{item.curPrice > item.baseBidPrice ? item.curPrice:item.baseBidPrice}}</div>
+	    <div style="width:130px">￥{{item.curPrice / item.shareAmount}}</div>
+	    <div style="width:130px">￥{{item.curPrice > item.baseBidPrice ? item.curPrice:item.baseBidPrice}}</div>
 	    
 
-	    <div style="width:180px" wx:if="{{ONEPRICE == true}}">￥{{item.curPrice}}</div>
-	    <div style="width:80px" wx:else>{{BIDCHECK == 0 ? item.sellerHide:item.bidderHide}}</div>
+	    <div style="width:180px">￥{{item.curPrice}}</div>
+	    <div style="width:80px" >{{BIDCHECK == 0 ? item.sellerHide:item.bidderHide}}</div>
 	    
 	    <div style="width:100px" wx:if="{{ONEPRICE == false && BIDCHECK == 0}}">￥{{item.curPrice > item.baseBidPrice ? item.curPrice:item.baseBidPrice}}</div>
 	    <div style="flex:1;text-align: right;{{ONEPRICE == true ? '':'color:#0091ff;'}}">{{ONEPRICE == true ? item.timer:item.bidtimer}}</div>
@@ -97,9 +97,9 @@
 
 </div>
 
-<script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
-<script src="js/transaction.js"></script>
+<script src="js/jquery.js?v=202012091608"></script>
+<script src="js/common.js?v=202012091608"></script>
+<script src="js/transaction.js?v=202012091608"></script>
 <script type="text/javascript">
 	
 
