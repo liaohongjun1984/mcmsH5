@@ -141,7 +141,7 @@ function listShareMarket(page) {
                         }else{
                             price =  n.curPrice;
                         }
-
+                        
                         html += '<a href="shop.html?id='+ n.id+'">';
                         html += '<div class="'+ rowClass +' flex">';
                         html += '    <div style="width:160px">'+ n.name +'</div>';
