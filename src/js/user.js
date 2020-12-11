@@ -591,15 +591,10 @@ function saleShare() {
     //   }
     // })
 }
-//退出登录功能实现，调试中
-function delCookie(){
-    var exp=new Date();
-    exp.setTime(exp.getTime()-1);
-    var cval=getCookie(name);
-    if(cval!=null)
-        document.cookie=name+"="+cval+";expires="+exp.toGMTString();
-    alert("你好啊!");
-    
+//退出登录功能实现
+function usrsLogout(){
+    delCookie("token");
+    window.location.reload();
 }
 //清除cookie
 //1

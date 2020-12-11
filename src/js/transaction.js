@@ -76,8 +76,9 @@ function listShareMarket(page) {
                     html += '<div class="row flex">';
                     html += '    <div style="width:160px">餐厅</div>';
                     html += '    <div style="width:70px">份额</div>';
-                    html += '    <div style="width:130px">单价</div>';
-                    html += '    <div style="width:180px">总价</div>';
+                    html += '    <div style="width:100px">单价</div>';
+                    html += '    <div style="width:100px">总价</div>';
+                    //html += '    <div style="width:100px">买家</div>';
                     html += '    <div style="flex:1;text-align: right;">挂单时间</div>';
                     html += '</div>';
                 }else{
@@ -89,7 +90,7 @@ function listShareMarket(page) {
                     if(stat == 0){
                         html += '    <div style="width:130px">最高出价</div>';
                         html += '    <div style="width:140px">起始价</div>';
-                        html += '    <div style="width:80px">出售者</div>';
+                        html += '    <div style="width:80px">买家</div>';
 
                     }else{
 
@@ -127,8 +128,9 @@ function listShareMarket(page) {
                         html += '<div class="'+ rowClass +' flex">';
                         html += '    <div style="width:160px">'+ n.name +'</div>';
                         html += '    <div style="width:70px">'+ n.shareAmount +'</div>';
-                        html += '    <div style="width:130px">'+ n.curPrice +'</div>';
-                        html += '    <div style="width:180px">'+ Number(n.curPrice * n.shareAmount) +'</div>';
+                        html += '    <div style="width:100px">'+ n.curPrice +'</div>';
+                        html += '    <div style="width:100px">'+ Number(n.curPrice * n.shareAmount) +'</div>';
+                        //html += '    <div style="width:100px">'+n.bidderHide+'</div>';
                         html += '    <div style="flex:1;text-align: right;">' + new Date(n.createDate).Format('yyyy-MM-dd') + '</div>';
                         html += '</div>';
                         html += '</a>';
@@ -136,12 +138,16 @@ function listShareMarket(page) {
 
 
                         var price = 0.0;
+                        var showname ='';
                         if(n.curPrice == 0){
                             price =  n.baseBidPrice;
+                            //无竞拍者
+                            showname='--'
                         }else{
                             price =  n.curPrice;
+                            showname = n.bidderHide;
                         }
-                        
+
                         html += '<a href="shop.html?id='+ n.id+'">';
                         html += '<div class="'+ rowClass +' flex">';
                         html += '    <div style="width:160px">'+ n.name +'</div>';
@@ -149,7 +155,7 @@ function listShareMarket(page) {
                         html += '    <div style="width:130px">'+ price +'</div>';
                         if(stat == 0){
                             html += '    <div style="width:140px">'+n.baseBidPrice+'</div>';
-                            html += '    <div style="width:80px">'+ n.sellerHide +'</div>';
+                            html += '    <div style="width:80px">'+ showname +'</div>';
 
                         }else{
 
