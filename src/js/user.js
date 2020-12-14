@@ -591,89 +591,8 @@ function saleShare() {
     //   }
     // })
 }
-<<<<<<< HEAD
 //退出登录功能实现
 function usrsLogout(){
     delCookie("token");
     window.location.reload();
 }
-//清除cookie
-//1
-// window.onbeforeunload = function (){
-//     if(window.event.clientY>0||window.event.altKey){
-//         window.onbeforeunload = null;
-//     }else{
-//         alert("推出系统"),
-//         $.ajax({
-//             type:"post",
-//             url:"main?action=logout",
-//             data:"",
-//             success:function (data){
-//             }
-//         }
-//         );
-//     }
-// }
-//2
-// function addCookie(objName,objValue,objHours)
-// {
-//     var str = objName + "=" + escape(objValue);
-//     if(objHours > 0){//等于0时，关闭浏览器自动清除Cookies.
-//         var date = new Date();
-//         var ms = objHours*3600*1000;
-//         date.setTime(date.getTime() + ms);
-//         str += "; expires=" + date.toGMTString();
-//     }
-//     document.cookie = str;
-// }
-//3
-
-//存储
-// function setCookie(cname, cvalue, exdays = 0) {
-//     cvalue = encodeURIComponent(JSON.stringify(cvalue));
-//     if (exdays > 0) {
-//       var d = new Date().getTime() + exdays * 24 * 3600 * 1000 + 8 * 3600 * 1000;
-//       var expires = "expires=" + new Date(d).toUTCString();
-//       document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-//     } else {
-//       document.cookie = cname + "=" + cvalue + ";" + ";path=/";
-//     }
-// }
-// //获取
-// function getCookie(cname) {
-//     var name = cname + "=";
-//     var ca = document.cookie.split(";");
-//         var c = ca[i];
-//     for (var i = 0; i < ca.length; i++) {
-//         while (c.charAt(0) == " ") {
-//         c = c.substring(1);
-//         }
-//         if (c.indexOf(name) == 0) {
-//         let d = c.substring(name.length, c.length);
-//         return JSON.parse(decodeURIComponent(d));
-//         }
-//     }
-//     return "";
-// }
-
-// //删除
-// function deleteCookie(name) {
-//     var date = new Date();
-//     date.setTime(date.getTime() - 1);
-//     var delValue = getCookie(name);
-//     if (delValue) {
-//         document.cookie = name + "=" + delValue + ";expires=" + date.toGMTString();
-//     }
-// } 
-  
-
-  
-//userShopName
-//userShopNum
-=======
-//退出登录功能实现，调试中
-function usrsLogout(){
-    delCookie("token");
-    window.location.reload();
-}
->>>>>>> 0504c002b5823a753df6abb090fc4af5afc0742b
