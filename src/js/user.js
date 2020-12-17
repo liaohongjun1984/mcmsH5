@@ -591,6 +591,7 @@ function saleShare() {
     //   }
     // })
 }
+<<<<<<< HEAD
 //userShopName
 //userShopNum
 //退出登录功能实现，调试中
@@ -598,3 +599,10 @@ function usrsLogout(){
     delCookie("token");
     window.location.reload();
 }
+=======
+//退出登录功能实现
+function usrsLogout(){
+    delCookie("token");
+    window.location.reload();
+}
+>>>>>>> be114b3dafb61ff6ff8096b5bec2a0a68c869d37
