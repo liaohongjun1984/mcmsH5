@@ -68,7 +68,7 @@
 	    <div style="width:180px">￥{{item.curPrice}}</div>
 	    <div style="width:80px" >{{BIDCHECK == 0 ? item.sellerHide:item.bidderHide}}</div>
 	    
-	    <div style="width:100px" wx:if="{{ONEPRICE == false && BIDCHECK == 0}}">￥{{item.curPrice > item.baseBidPrice ? item.curPrice:item.baseBidPrice}}</div>
+	    <div style="width:100px">￥{{item.curPrice > item.baseBidPrice ? item.curPrice:item.baseBidPrice}}</div>
 	    <div style="flex:1;text-align: right;{{ONEPRICE == true ? '':'color:#0091ff;'}}">{{ONEPRICE == true ? item.timer:item.bidtimer}}</div>
 
 

@@ -1,5 +1,8 @@
 var stat = 0;
-var selectNum = 1;
+var selectNum = 0;
+var selectNum_bid = 0;  //这里出现默认初始值为1的bug
+// var num = 0;
+// var num1 = 0;
 var userFund = [];
 var typeTag = 'ONEPRICE';
 var marketType = '0';
@@ -51,7 +54,7 @@ function showTable(obj){
 
 function minusCount(){
     var num = selectNum - 1;
-    if(num > 0){
+    if(num >= 0){
         $(".shop-number-right-input").html(num);
         selectNum = num;
         $(".shop-number-right-plus").removeClass("disable-btn");
@@ -63,7 +66,29 @@ function minusCount(){
     }else{
         $(".shop-number-right-reduce").removeClass("disable-btn");
     }
-
+}
+function minusBidStepCount(){
+    var num1 = selectNum_bid - 1;
+    if(num1 >= 0){
+        $(".shop-number-right-bidstep-input").html(num1);
+        selectNum_bid = num1;
+        $(".shop-number-right-bidstep-plus").removeClass("disable-btn1");
+    }else{
+        return
+    }
+    if(num1 == 1){
+        $(".shop-number-right-bidstep-reduce").addClass("disable-btn1");
+    }else{
+        $(".shop-number-right-bidstep-reduce").removeClass("disable-btn1");
+    }
+    var price = project.curPrice;
+    if(project.curPrice == 0){
+        price = project.baseBidPrice;
+    }else{
+        price = project.curPrice;
+    }
+    $(".allPrice").html(num1 * project.bidStep + price*project.shareAmount);
+    $(".showNeedPrice").html(num1 * project.bidStep + price*project.shareAmount);
 }
 function addCount(){
     var num = selectNum + 1;
@@ -81,16 +106,35 @@ function addCount(){
     }
 }
 
+function addBidStepCount(){
+    var num1 = selectNum_bid + 1;
+    if(num1 >= 0){
+        $(".shop-number-right-bidstep-input").html(num1);
+        selectNum_bid = num1;
+        $(".shop-number-right-bidstep-reduce").removeClass("disable-btn1");
+    }else{
+        return
+    }  
+    var price = project.curPrice;
+    if(project.curPrice == 0){
+        price = project.baseBidPrice;
+    }else{
+        price = project.curPrice;
+    }
+    $(".allPrice").html(num1 * project.bidStep + price * project.shareAmount);
+    $(".showNeedPrice").html(num1 * project.bidStep + price * project.shareAmount);
+   
+}
+    
 
 
 function getShareMarket() {
-
     var url = '/api/getShareMarket.do';
     $.ajax({
         type: 'get',
         url: url,
         data: {
-            marketId: getURLPara('id')
+            marketId: getURLPara('id'),
         },
         dataType: 'json',
         success: function(data) {
@@ -104,9 +148,10 @@ function getShareMarket() {
                 totalNum = obj.shareAmount;
                 if(totalNum == 1){
                     $(".shop-number-right-plus").addClass("disable-btn");
+                    $(".shop-number-right-bitstep-plus").addClass("disable-btn1");
                 }
                 showTable(obj);
-
+                //var shareAmountnum = addCount();
                 var price = obj.curPrice;
                 if(obj.marketType == "BID"){
                     if(obj.curPrice == 0){
@@ -116,15 +161,14 @@ function getShareMarket() {
                     }
                 }
                 project.price = price;
-                
                 $(".showName").html(obj.name);
                 $(".showShareAmount").html(obj.shareAmount);
+                $(".buyAmount").html(obj.shareAmount);
                 $(".showCurPrice").html(price);
-                $(".showNeedPrice").html(price  * obj.shareAmount);
-                $(".showTotalPrice").html(price * obj.shareAmount);
                 $(".showSellerHide").html(obj.sellerHide);
                 $(".showDate").html(new Date(obj.createDate).Format('yyyy-MM-dd'));
-
+                $(".showTotalPrice").html(price * obj.shareAmount);
+                $(".showBidStepPrice").html(project.bidStep);
             // baseBidPrice: 0
             // bidStep: 0
             // bidderId: 0

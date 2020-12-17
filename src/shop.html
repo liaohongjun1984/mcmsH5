@@ -131,7 +131,6 @@
         </div>
         {{info.bidtimer}}
       </div> -->
-
       <div>
         <div class='shop-number'>
           <div class="title">
@@ -139,10 +138,33 @@
               购<text style="flex:1;"></text>买<text style="flex:1;"></text>份<text style="flex:1;"></text>额：
             </div>
           </div>
+          <span class="buyAmount">--</span>份
+          <!-- {{info.shareAmount}}份 -->
+        </div>
+      </div>
+      <div>
+        <div class='shop-number'>
+          <div class="title">
+            <div class="flex">
+              加<text style="flex:1;"></text>价<text style="flex:1;"></text>价<text style="flex:1;"></text>格：
+            </div>
+          </div>
+          ￥<span class="showBidStepPrice">--</span>
+          <!-- ￥{{info.curPrice}} -->
+        </div>
+      </div>
+
+      <div>
+        <div class='shop-number'>
+          <div class="title">
+            <div class="flex">
+              出<text style="flex:1;"></text>价：
+            </div>
+          </div>
           <div class='shop-number-right'>
-              <div class="shop-number-right-reduce disable-btn" onclick='minusCount()'>-</div>
-              <div class='shop-number-right-input'>1</div>
-              <div class="shop-number-right-plus" onclick='addCount()'>+</div>
+            <div class="shop-number-right-bidstep-reduce disable-btn1" onclick='minusBidStepCount()'>-</div>
+            <div class='shop-number-right-bidstep-input allPrice'>--</div>
+            <div class="shop-number-right-bidstep-plus" onclick='addBidStepCount()'>+</div>
           </div>
         </div>
       </div>
