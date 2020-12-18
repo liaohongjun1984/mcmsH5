@@ -30,13 +30,6 @@ function showTable(obj){
         html += '  <div style="flex:1">挂单时间</div>';
         html += '</div>';
 
-                // $(".showName").html(obj.name);
-                // $(".showShareAmount").html(obj.shareAmount);
-                // $(".showCurPrice").html(obj.curPrice);
-                // $(".showSellerHide").html(obj.sellerHide);
-                // $(".showDate").html(obj.createDate);
-
-
         html += '<div class="row1 flex">';
         html += '  <div style="width:180px">'+ obj.name +'</div>';
         html += '  <div style="width:80px">'+ obj.shareAmount +'</div>';
@@ -144,7 +137,7 @@ function getShareMarket() {
                 }
                 project   = obj;
                 totalNum  = obj.shareAmount;
-                selectNum = obj.shareAmount；
+                selectNum = obj.shareAmount;
                 if(totalNum == 1){
                     $(".shop-number-right-plus").addClass("disable-btn");
                     $(".shop-number-right-bitstep-plus").addClass("disable-btn1");
@@ -193,14 +186,15 @@ function buyProjectShare(){
 }
 
 function buyShopGo(){
-
+    //获取需要的支付的购买价格
+    var price = $(".showNeedPrice").html();
     $.ajax({
         type: 'post',
         url: '/api//buyMarketShare.do',
         data: {
             marketId:project.id,
             shareCount:selectNum,
-            price:project.price,
+            price:price,
         },
         headers: {
             'Authorization': "BASIC " + getCookie("token")
