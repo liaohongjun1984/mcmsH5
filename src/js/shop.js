@@ -1,8 +1,6 @@
 var stat = 0;
 var selectNum = 0;
 var selectNum_bid = 0;  //这里出现默认初始值为1的bug
-// var num = 0;
-// var num1 = 0;
 var userFund = [];
 var typeTag = 'ONEPRICE';
 var marketType = '0';
@@ -144,8 +142,9 @@ function getShareMarket() {
                     showMsg("没有数据");
                     return
                 }
-                project = obj;
-                totalNum = obj.shareAmount;
+                project   = obj;
+                totalNum  = obj.shareAmount;
+                selectNum = obj.shareAmount；
                 if(totalNum == 1){
                     $(".shop-number-right-plus").addClass("disable-btn");
                     $(".shop-number-right-bitstep-plus").addClass("disable-btn1");
@@ -169,18 +168,6 @@ function getShareMarket() {
                 $(".showDate").html(new Date(obj.createDate).Format('yyyy-MM-dd'));
                 $(".showTotalPrice").html(price * obj.shareAmount);
                 $(".showBidStepPrice").html(project.bidStep);
-            // baseBidPrice: 0
-            // bidStep: 0
-            // bidderId: 0
-            // createDate: 1605258413000
-            // curPrice: 6666
-            // customerId: 338
-            // id: 75
-            // marketType: "ONEPRICE"
-            // name: "江南第一家"
-            // projectId: 1
-            // shareAmount: 1
-            // stat: 0
 
             } else {
                 alert(data.message)
