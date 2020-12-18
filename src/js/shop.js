@@ -37,7 +37,6 @@ function showTable(obj){
         html += '  <div style="width:180px">'+ obj.curPrice * obj.shareAmount +'</div>';
         html += '  <div style="flex:1">'+ new Date(obj.createDate).Format('yyyy-MM-dd') +'</div>';
         html += '</div>';
-    }else{
     }
     $(".showTable").html(html)
 }
@@ -162,6 +161,8 @@ function getShareMarket() {
                 $(".showTotalPrice").html(price * obj.shareAmount);
                 $(".showBidStepPrice").html(project.bidStep);
 
+                $(".allPrice").html(selectNum * project.bidStep + price*project.shareAmount);
+                $(".showNeedPrice").html(selectNum * project.bidStep + price*project.shareAmount);
             } else {
                 alert(data.message)
             }
