@@ -1,6 +1,6 @@
 var stat = 0;
 var selectNum = 0;
-var selectNum_bid = 0;  //这里出现默认初始值为1的bug
+var selectNum_bid = 0;  
 var userFund = [];
 var typeTag = 'ONEPRICE';
 var marketType = '0';
@@ -77,8 +77,8 @@ function minusBidStepCount(){
     }else{
         price = project.curPrice;
     }
-    $(".allPrice").html(num1 * project.bidStep + price*project.shareAmount);
-    $(".showNeedPrice").html(num1 * project.bidStep + price*project.shareAmount);
+    $(".allPrice").html(num1 * project.bidStep + price);
+    $(".showNeedPrice").html(num1 * project.bidStep + price);
 }
 function addCount(){
     var num = selectNum + 1;
@@ -111,8 +111,8 @@ function addBidStepCount(){
     }else{
         price = project.curPrice;
     }
-    $(".allPrice").html(num1 * project.bidStep + price * project.shareAmount);
-    $(".showNeedPrice").html(num1 * project.bidStep + price * project.shareAmount);
+    $(".allPrice").html(num1 * project.bidStep + price);
+    $(".showNeedPrice").html(num1 * project.bidStep + price);
    
 }
     
@@ -155,14 +155,14 @@ function getShareMarket() {
                 $(".showName").html(obj.name);
                 $(".showShareAmount").html(obj.shareAmount);
                 $(".buyAmount").html(obj.shareAmount);
-                $(".showCurPrice").html(price);
+                $(".showCurPrice").html(price/obj.shareAmount);
                 $(".showSellerHide").html(obj.sellerHide);
                 $(".showDate").html(new Date(obj.createDate).Format('yyyy-MM-dd'));
-                $(".showTotalPrice").html(price * obj.shareAmount);
+                $(".showTotalPrice").html(price);
                 $(".showBidStepPrice").html(project.bidStep);
 
-                $(".allPrice").html(selectNum * project.bidStep + price*project.shareAmount);
-                $(".showNeedPrice").html(selectNum * project.bidStep + price*project.shareAmount);
+                $(".allPrice").html((selectNum-2) * project.bidStep + price);  //用于初始显示，后续改动在上面的按钮里面
+                $(".showNeedPrice").html((selectNum-2) * project.bidStep + price);
             } else {
                 alert(data.message)
             }
@@ -182,7 +182,6 @@ function buyProjectShare(){
     $("#buyMsgShow .title").html("购买确认");
     $("#buyMsgShow .msgTips").html(content);
     $("#buyMsgShow .moneyTag").html(moneyTag);
-
     $("#buyMsgShow").show();
 }
 
