@@ -128,8 +128,8 @@ function listShareMarket(page) {
                         html += '<div class="'+ rowClass +' flex">';
                         html += '    <div style="width:160px">'+ n.name +'</div>';
                         html += '    <div style="width:70px">'+ n.shareAmount +'</div>';
-                        html += '    <div style="width:100px">'+ n.curPrice +'</div>';
-                        html += '    <div style="width:100px">'+ Number(n.curPrice * n.shareAmount) +'</div>';
+                        html += '    <div style="width:100px">'+ (Number(n.curPrice)).toFixed(2) +'</div>';
+                        html += '    <div style="width:100px">'+ (Number(n.curPrice * n.shareAmount)).toFixed(2) +'</div>';
                         //html += '    <div style="width:100px">'+n.bidderHide+'</div>';
                         html += '    <div style="flex:1;text-align: right;">' + new Date(n.createDate).Format('yyyy-MM-dd') + '</div>';
                         html += '</div>';
@@ -152,9 +152,9 @@ function listShareMarket(page) {
                         html += '<div class="'+ rowClass +' flex">';
                         html += '    <div style="width:160px">'+ n.name +'</div>';
                         html += '    <div style="width:70px">'+ n.shareAmount +'</div>';
-                        html += '    <div style="width:130px">'+ price +'</div>';
+                        html += '    <div style="width:130px">'+ (price).toFixed(2) +'</div>';
                         if(stat == 0){
-                            html += '    <div style="width:140px">'+n.baseBidPrice+'</div>';
+                            html += '    <div style="width:140px">'+(n.baseBidPrice).toFixed(2)+'</div>';
                             html += '    <div style="width:80px">'+ showname +'</div>';
 
                         }else{

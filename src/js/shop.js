@@ -77,8 +77,8 @@ function minusBidStepCount(){
     }else{
         price = project.curPrice;
     }
-    $(".allPrice").html(num1 * project.bidStep + price);
-    $(".showNeedPrice").html(num1 * project.bidStep + price);
+    $(".allPrice").html((num1 * project.bidStep + price).toFixed(2));
+    $(".showNeedPrice").html((num1 * project.bidStep + price).toFixed(2));
 }
 function addCount(){
     var num = selectNum + 1;
@@ -111,8 +111,8 @@ function addBidStepCount(){
     }else{
         price = project.curPrice;
     }
-    $(".allPrice").html(num1 * project.bidStep + price);
-    $(".showNeedPrice").html(num1 * project.bidStep + price);
+    $(".allPrice").html((num1 * project.bidStep + price).toFixed(2));
+    $(".showNeedPrice").html((num1 * project.bidStep + price).toFixed(2));
    
 }
     
@@ -155,14 +155,14 @@ function getShareMarket() {
                 $(".showName").html(obj.name);
                 $(".showShareAmount").html(obj.shareAmount);
                 $(".buyAmount").html(obj.shareAmount);
-                $(".showCurPrice").html(price/obj.shareAmount);
+                $(".showCurPrice").html((price/obj.shareAmount).toFixed(2));
                 $(".showSellerHide").html(obj.sellerHide);
                 $(".showDate").html(new Date(obj.createDate).Format('yyyy-MM-dd'));
-                $(".showTotalPrice").html(price);
-                $(".showBidStepPrice").html(project.bidStep);
+                $(".showTotalPrice").html((price).toFixed(2));
+                $(".showBidStepPrice").html((project.bidStep).toFixed(2));
 
-                $(".allPrice").html((selectNum-2) * project.bidStep + price);  //用于初始显示，后续改动在上面的按钮里面
-                $(".showNeedPrice").html((selectNum-2) * project.bidStep + price);
+                $(".allPrice").html(((selectNum-obj.shareAmount) * project.bidStep + price).toFixed(2));  //用于初始显示，后续改动在上面的按钮里面
+                $(".showNeedPrice").html(((selectNum-obj.shareAmount) * project.bidStep + price).toFixed(2));  //用于初始显示
             } else {
                 alert(data.message)
             }
