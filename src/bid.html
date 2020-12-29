@@ -35,7 +35,7 @@
 </div>
 
 
-<navigator class="{{index%2 == 0 ? 'row1':'row2'}} flex" wx:for="{{projectList}}" wx:key="projectList"  url='/pages/shop/shop?id={{item.id}}&BID=true'>
+<navigator class="{{index%2 == 0 ? 'row1':'row2'}} flex"   url='/pages/shop/shop?id={{item.id}}&BID=true'>
   <div style="width:160px">{{item.name}}</div>
   <div style="width:70px">{{item.shareAmount}}份</div>
   <div style="width:130px">￥{{item.baseBidPrice}}</div>

@@ -42,21 +42,21 @@ function showTable(obj){
 }
 
 
-function minusCount(){
-    var num = selectNum - 1;
-    if(num >= 0){
-        $(".shop-number-right-input").html(num);
-        selectNum = num;
-        $(".shop-number-right-plus").removeClass("disable-btn");
-    }else{
-        return
-    }
-    if(num == 1){
-        $(".shop-number-right-reduce").addClass("disable-btn");
-    }else{
-        $(".shop-number-right-reduce").removeClass("disable-btn");
-    }
-}
+// function minusCount(){
+//     var num = selectNum - 1;
+//     if(num >= 0){
+//         $(".shop-number-right-input").html(num);
+//         selectNum = num;
+//         $(".shop-number-right-plus").removeClass("disable-btn");
+//     }else{
+//         return
+//     }
+//     if(num == 1){
+//         $(".shop-number-right-reduce").addClass("disable-btn");
+//     }else{
+//         $(".shop-number-right-reduce").removeClass("disable-btn");
+//     }
+// }
 function minusBidStepCount(){
     var num1 = selectNum_bid - 1;
     if(num1 >= 0){
@@ -80,21 +80,21 @@ function minusBidStepCount(){
     $(".allPrice").html((num1 * project.bidStep + price).toFixed(2));
     $(".showNeedPrice").html((num1 * project.bidStep + price).toFixed(2));
 }
-function addCount(){
-    var num = selectNum + 1;
-    if(num <= totalNum){
-        $(".shop-number-right-input").html(num);
-        selectNum = num;
-        $(".shop-number-right-reduce").removeClass("disable-btn");
-    }else{
-        return
-    }
-    if(num == totalNum){
-        $(".shop-number-right-plus").addClass("disable-btn");
-    }else{
-        $(".shop-number-right-plus").removeClass("disable-btn");
-    }
-}
+// function addCount(){
+//     var num = selectNum + 1;
+//     if(num <= totalNum){
+//         $(".shop-number-right-input").html(num);
+//         selectNum = num;
+//         $(".shop-number-right-reduce").removeClass("disable-btn");
+//     }else{
+//         return
+//     }
+//     if(num == totalNum){
+//         $(".shop-number-right-plus").addClass("disable-btn");
+//     }else{
+//         $(".shop-number-right-plus").removeClass("disable-btn");
+//     }
+// }
 
 function addBidStepCount(){
     var num1 = selectNum_bid + 1;
@@ -161,8 +161,8 @@ function getShareMarket() {
                 $(".showTotalPrice").html((price).toFixed(2));
                 $(".showBidStepPrice").html((project.bidStep).toFixed(2));
 
-                $(".allPrice").html(((selectNum-obj.shareAmount) * project.bidStep + price).toFixed(2));  //用于初始显示，后续改动在上面的按钮里面
-                $(".showNeedPrice").html(((selectNum-obj.shareAmount) * project.bidStep + price).toFixed(2));  //用于初始显示
+                $(".allPrice").html(((selectNum-obj.shareAmount) * project.bidStep + price + project.bidStep).toFixed(2));  //用于初始显示，后续改动在上面的按钮里面
+                $(".showNeedPrice").html(((selectNum-obj.shareAmount) * project.bidStep + price + project.bidStep).toFixed(2));  //用于初始显示
             } else {
                 alert(data.message)
             }

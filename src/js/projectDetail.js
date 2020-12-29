@@ -168,7 +168,6 @@ function getProject() {
                     stat = true;
                     $(".footer").show();
                 }
-
                 var progressNum = Number(obj.sellAmount / obj.fullAmount * 100).toFixed(2);
                 $(".progressBox .progressNum").html(progressNum);
                 $(".progressBox .progress").css({left:(progressNum-100)+"%"});
@@ -188,13 +187,20 @@ function buyProjectShareShow(){
         return
     }
     totalNum = (project.fullAmount - project.sellAmount) / project.unitAmount;
-    $("#buyShow").show();
-    $(".shopName").html(project.name);
-    $(".unitAmount").html(project.unitAmount);
-    $(".share").html(totalNum);
-    $(".myMoney").html(userFund.amount);
-    $(".needMoney").html(share * project.unitAmount);
-    $("#needShare").val(share);
+    if(project.sellAmount < project.fullAmount){
+        $("#buyShow").show();
+        $(".shopName").html(project.name);
+        $(".unitAmount").html(project.unitAmount);
+        $(".share").html(totalNum);
+        $(".myMoney").html(userFund.amount);
+        $(".needMoney").html(share * project.unitAmount);
+        $("#needShare").val(share);
+    }
+    else{
+        showMsg("商品份额已被全部预定")
+        return
+    }
+    
 }
 function buyProjectShare(){
     
@@ -224,6 +230,7 @@ function buyShopGo(){
         dataType: 'json',
         success: function(data) {
             if (data.success) {
+
                 showMsg("购买成功");
                 $('#buyMsgShow').hide();
                 $('#buyShow').hide();
