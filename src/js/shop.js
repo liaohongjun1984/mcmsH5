@@ -77,8 +77,15 @@ function minusBidStepCount(){
     }else{
         price = project.curPrice;
     }
-    $(".allPrice").html((num1 * project.bidStep + price).toFixed(2));
-    $(".showNeedPrice").html((num1 * project.bidStep + price).toFixed(2));
+    if(project.curPrice == 0){
+        $(".allPrice").html((num1 * project.bidStep + price).toFixed(2));
+        $(".showNeedPrice").html((num1 * project.bidStep + price).toFixed(2));
+    }
+    else{
+        $(".allPrice").html(((num1+1) * project.bidStep + price).toFixed(2));
+        $(".showNeedPrice").html(((num1+1) * project.bidStep + price).toFixed(2));
+    }
+    
 }
 // function addCount(){
 //     var num = selectNum + 1;
@@ -111,8 +118,14 @@ function addBidStepCount(){
     }else{
         price = project.curPrice;
     }
-    $(".allPrice").html((num1 * project.bidStep + price).toFixed(2));
-    $(".showNeedPrice").html((num1 * project.bidStep + price).toFixed(2));
+    if(project.curPrice == 0){
+        $(".allPrice").html((num1 * project.bidStep + price).toFixed(2));
+        $(".showNeedPrice").html((num1 * project.bidStep + price).toFixed(2));
+    }
+    else{
+        $(".allPrice").html(((num1+1) * project.bidStep + price).toFixed(2));
+        $(".showNeedPrice").html(((num1+1) * project.bidStep + price).toFixed(2));
+    }
    
 }
     
@@ -144,11 +157,14 @@ function getShareMarket() {
                 showTable(obj);
                 //var shareAmountnum = addCount();
                 var price = obj.curPrice;
+                var allPrice = obj.curPrice;
                 if(obj.marketType == "BID"){
                     if(obj.curPrice == 0){
-                        price = obj.baseBidPrice;
+                        price = obj.baseBidPrice;    
+                        allPrice = ((selectNum-obj.shareAmount) * project.bidStep + price).toFixed(2);                
                     }else{
                         price = obj.curPrice;
+                        allPrice = ((selectNum-obj.shareAmount) * project.bidStep + price + project.bidStep).toFixed(2);
                     }
                 }
                 project.price = price;
@@ -161,8 +177,8 @@ function getShareMarket() {
                 $(".showTotalPrice").html((price).toFixed(2));
                 $(".showBidStepPrice").html((project.bidStep).toFixed(2));
 
-                $(".allPrice").html(((selectNum-obj.shareAmount) * project.bidStep + price + project.bidStep).toFixed(2));  //用于初始显示，后续改动在上面的按钮里面
-                $(".showNeedPrice").html(((selectNum-obj.shareAmount) * project.bidStep + price + project.bidStep).toFixed(2));  //用于初始显示
+                $(".allPrice").html(allPrice);  //用于初始显示，后续改动在上面的按钮里面
+                $(".showNeedPrice").html(allPrice);  //用于初始显示
             } else {
                 alert(data.message)
             }
