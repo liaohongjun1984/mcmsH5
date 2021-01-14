@@ -102,8 +102,8 @@ function getTopBar() {
                 var html = '';
                 $.each(imgArr,function(i,n){
                     html += '<img class="swiper-slide" src="'+ n +'" alt="">';
-                    html += '<img class="swiper-slide" src="'+ n +'" alt="">';
-                    html += '<img class="swiper-slide" src="'+ n +'" alt="">';
+                    // html += '<img class="swiper-slide" src="'+ n +'" alt="">';
+                    // html += '<img class="swiper-slide" src="'+ n +'" alt="">';
                 })
                 $(".banner .swiper-wrapper").html(html);
                 $(function(){
